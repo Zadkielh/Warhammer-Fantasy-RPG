@@ -1,0 +1,7 @@
+"sample"
+{
+	"base"		"nutscript"
+	"title"		"warhammer-fantasy-rpg"
+	"author"	"Zadkiel"
+	"menusystem"	"1"
+}
