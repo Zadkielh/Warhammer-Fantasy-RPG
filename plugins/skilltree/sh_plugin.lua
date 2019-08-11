@@ -366,8 +366,10 @@ function PLUGIN:PostPlayerLoadout(client)
 	client:SetNWFloat("runSpeed", client:GetRunSpeed())
 	client:SetNWFloat("walkSpeed", client:GetWalkSpeed())
 
-	client:getChar():CleanSummonerPool()
-	client:getChar():CreateSummonerPool()
+	timer.Simple(0.1, function()
+		client:getChar():CleanSummonerPool()
+		client:getChar():CreateSummonerPool()
+	end)
 end
 
 
@@ -762,9 +764,10 @@ function entityMeta:AddEntityToSummonerPool(character, SummonerPop)
 end
 
 function charMeta:CreateSummonerPool()
-	if (IsValid(self)) then
+	if (self) then
 		self:setData("SummonerPool", {})
-		self:setData("SummonerLimit", 5)
+		self:setData("SummonerLimit", math.max(self:getLevel()/5, 1))
+		print(self:getData("SummonerLimit"))
 	end
 end
 
@@ -799,6 +802,7 @@ end
 
 function charMeta:GetPoolLimit()
 	local SummonerLimit = self:getData("SummonerLimit", 5)
+	print(SummonerLimit)
 	return SummonerLimit
 end
 
@@ -852,3 +856,22 @@ do
 
 	end
 end 
+
+------ IMPORTANT HOOKS -----------------------------
+
+hook.Add("EntityTakeDamage", "skillMods", function(Entity, dmg)
+
+	if dmg:GetAttacker():IsPlayer() then
+		
+        local ply = dmg:GetAttacker()
+		local char = ply:getChar()
+
+		if (ply:GetNWBool("RavCarni")) then
+			timer.Simple(0.05, function()
+				local lifeSteal = char:getData("lifeSteal", 0)
+				char:setData("lifeSteal", lifeSteal -50)
+				ply:SetNWBool("RavCarni", false)
+			end)
+		end
+    end
+end)

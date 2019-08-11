@@ -1,6 +1,6 @@
 CAT.name = "Path of Blood"
 CAT.background = "vgui/chaos_knight_2.png"
-CAT.icon = "vgui/Blason_Barbare.png"
+CAT.icon = "vgui/skills/blood.png"
 
 CAT.iconx = 128
 CAT.icony = 124

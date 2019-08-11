@@ -22,7 +22,7 @@ CLASS.icon = "vgui/Blason_Barbare.png"
 CLASS.iconx = 64
 CLASS.icony = 64
 
-CLASS.model = "models/zadkiel/deathwatch/players/primaris_gravis_deathwatch_player.mdl"
+CLASS.model = "models/zadkiel/chaos/marauder/players/marauder_player.mdl"
 
 CLASS.bodygroups = {
 }

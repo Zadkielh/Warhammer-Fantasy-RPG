@@ -11,3 +11,7 @@ CAT.desc = [[
 
 CAT.uniqueID = CAT_CHS_UNDIV_BLESS
 CAT.order = 1
+CAT.class = {
+    "chaos_warrior",
+    "reaver"
+}

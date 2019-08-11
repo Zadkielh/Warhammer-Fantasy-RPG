@@ -1,21 +1,24 @@
-TRAIT.name = "Skulls for the skull throne!"
+TRAIT.name = "Undivided"
 
 TRAIT.IconX = 1
 TRAIT.IconY = 1
 TRAIT.LevelReq = 5
 TRAIT.SkillPointCost = 0
 TRAIT.Incompatible = {
-
+    "khorne",
+    "nurgle",
+    "slaanesh",
+    "tzeentch"
 }
 
 TRAIT.RequiredTraits = {
 
 }
 TRAIT.icon = "vgui/skills/ability_warrior_defensivestance_1.png"
-TRAIT.category = "Blessings of Khorne"-- Common Passives, Warriors of Chaos, Lore of Light, Dark Magic
+TRAIT.category = "Blessings of Chaos Undivided"-- Common Passives, Warriors of Chaos, Lore of Light, Dark Magic
 
 TRAIT.desc = [[
-This trait is the entry trait for the khorne tree. This one locks out all the other gods aswell as the undivided advanced traits.
+This trait is the entry trait for the Undivided tree. This one locks out all the other gods aswell as the undivided advanced traits.
 
 Health Regen: +10
 Damage: +50

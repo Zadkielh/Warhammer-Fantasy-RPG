@@ -24,7 +24,7 @@ CLASS.attribs = {
     ["fth"] = 5,
 }
 CLASS.icon = "vgui/Warlock_crest.png"
-CLASS.model = "models/zadkiel/chaos/sorcerer/players/sorcerer_player.mdl"
+CLASS.model = "models/zadkiel/chaos/marauder/players/marauder_player.mdl"
 
 CLASS.bodygroups = {
 }

@@ -5,4 +5,5 @@ CAT.iconx = 148
 CAT.icony = 184
 
 CAT.uniqueID = CAT_SIGMAR
-CAT.order = 2
+CAT.order = 3
+

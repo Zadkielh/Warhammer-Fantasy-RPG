@@ -253,7 +253,13 @@ function DrawStm( client )
 end
 
 function DrawPsy( client )
+	
 	local len = ScrW() * 0.78 + LocalPlayer():getLocalVar("mana", 0) * 4 -5
+
+	if client:getChar():hasTrait("blooddrinker") then
+		len = ScrW() * 0.78 + ( math.min((LocalPlayer():getLocalVar("mana", 0) * 395) / LocalPlayer():getChar():getData("bloodpool", 0), 395) )
+			
+	end
 
 	local col = Color(0, 102, 255)
 
@@ -292,7 +298,7 @@ function DrawPsy( client )
 			surface.SetMaterial( backgroundbar2 )
 			surface.DrawTexturedRect( ScrW() * 0.78, ScrH() - 158, 100 * 4, 42)
 			if tobool(UIInformation:GetString()) then
-				draw.SimpleText(math.Round(LocalPlayer():getLocalVar("mana", 0), 2) .. "/ 100", "CenturyGothicSmall", ScrW() * 0.83, ScrH() - 138, Color(255, 255, 255), 3, 1)
+				
 				local magic = client:getChar():getAttrib("mgc", 1)
 				local faith = client:getChar():getAttrib("fth", 1)
 				local regen = (client:getChar():getAttrib("mgc", 0) / 100 * 2.5) * 20
@@ -301,6 +307,9 @@ function DrawPsy( client )
 				end
 				if !client:getChar():hasTrait("blooddrinker") then
 					draw.SimpleText(regen .. "/5s", "CenturyGothicSmall", ScrW() * 0.9, ScrH() - 138, Color(255, 255, 255), 3, 1)
+					draw.SimpleText(math.Round(LocalPlayer():getLocalVar("mana", 0), 2) .. "/ 100", "CenturyGothicSmall", ScrW() * 0.83, ScrH() - 138, Color(255, 255, 255), 3, 1)
+				else
+					draw.SimpleText(math.Round(LocalPlayer():getLocalVar("mana", 0), 2) .. "/ " .. LocalPlayer():getChar():getData("bloodpool", 0), "CenturyGothicSmall", ScrW() * 0.83, ScrH() - 138, Color(255, 255, 255), 3, 1)
 				end
 			end
 	

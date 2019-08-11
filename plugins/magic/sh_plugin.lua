@@ -9,7 +9,7 @@ if (SERVER) then
 	
 	client:setLocalVar("mana", 100)
 			
-			if !client:getChar():hasTrait("blooddrinker") then
+			if !client:getChar():hasTrait("khorne") then
 				timer.Create(uniqueID, 0.25, 0, function()
 					
 					if IsValid(client) then
@@ -31,6 +31,14 @@ if (SERVER) then
 					end
 				end
 				)
+			else
+				if timer.Exists(uniqueID) then
+					timer.Remove(uniqueID)
+				end
+				timer.Simple(0.1, function()
+					local bloodPool = client:getChar():getData("bloodpool", 0)
+					client:setLocalVar("mana", bloodPool)
+				end)
 			end
 	end
 end

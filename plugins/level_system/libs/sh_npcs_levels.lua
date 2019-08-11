@@ -63,6 +63,16 @@ NPC_XP = {
 	["grn_wolf"] = {class = "npc_zad_grn_wolf", value = 2.5, name = "Giant Wolf", baselevel = 5, maxlevel = 25, size = true, damagemulti = 2, xpmulti = 5, healthmulti = 1.5},
 	["vmp_dire_wolf"] = {class = "npc_zad_vmp_dire_wolf", value = 5, name = "Vampire Dire Wolf", baselevel = 10, maxlevel = 50, size = true, damagemulti = 2, xpmulti = 5, healthmulti = 1.2},
 
+	["vmp_black_knight"] = {class = "npc_zad_vmp_black_knight", value = 100, name = "Black Knight", baselevel = 25, maxlevel = 75, size = true, damagemulti = 2, xpmulti = 5, healthmulti = 1.2},
+	["vmp_blood_knight"] = {class = "npc_zad_vmp_blood_knight", value = 500, name = "Blood Knight", baselevel = 50, maxlevel = 100, size = true, damagemulti = 5, xpmulti = 10, healthmulti = 2},
+	["vmp_crypt_ghoul"] = {class = "npc_zad_vmp_crypt_ghoul", value = 10, name = "Crypt Ghoul", baselevel = 10, maxlevel = 50, size = true, damagemulti = 2, xpmulti = 5, healthmulti = 1.2},
+	["vmp_crypt_horror"] = {class = "npc_zad_vmp_crypt_horror", value = 400, name = "Crypt Horror", baselevel = 30, maxlevel = 60, size = true, damagemulti = 5, xpmulti = 5, healthmulti = 3},
+	["vmp_skeleton_warrior_sp"] = {class = "npc_zad_vmp_skeleton_warrior_sp", value = 5, name = "Skeleton Warrior", baselevel = 1, maxlevel = 50, size = true, damagemulti = 4, xpmulti = 5, healthmulti = 1.2},
+	["vmp_skeleton_warrior_sws"] = {class = "npc_zad_vmp_skeleton_warrior_sws", value = 5, name = "Skeleton Warrior", baselevel = 1, maxlevel = 50, size = true, damagemulti = 4, xpmulti = 5, healthmulti = 1.2},
+	["vmp_wight_king"] = {class = "npc_zad_vmp_wight_king", value = 500, name = "Wight King", baselevel = 50, maxlevel = 100, size = true, damagemulti = 5, xpmulti = 10, healthmulti = 5},
+	["vmp_zombies"] = {class = "npc_zad_vmp_zombies", value = 2.5, name = "Zombie", baselevel = 1, maxlevel = 25, size = true, damagemulti = 2, xpmulti = 5, healthmulti = 2},
+	["vmp_vampire_lord"] = {class = "npc_zad_vmp_vampire_lord", value = 500, name = "Vampire Lord", baselevel = 75, maxlevel = 100, size = true, damagemulti = 10, xpmulti = 15, healthmulti = 20},
+	["vmp_dragon"] = {class = "npc_zad_vmp_dragon", value = 1000, name = "Undead Dragon", baselevel = 90, maxlevel = 100, size = true, damagemulti = 20, xpmulti = 50, healthmulti = 20},
 
 }
 

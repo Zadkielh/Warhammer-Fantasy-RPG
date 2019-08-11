@@ -5,8 +5,12 @@ TRAIT.IconY = 1
 TRAIT.LevelReq = 5
 TRAIT.SkillPointCost = 0
 TRAIT.Incompatible = {
-
+    "khorne",
+    "undivided",
+    "slaanesh",
+    "tzeentch"
 }
+
 
 TRAIT.RequiredTraits = {
 

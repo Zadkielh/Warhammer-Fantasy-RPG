@@ -251,6 +251,7 @@ local PANEL = {}
 		Cat1:Add( "Damage:  + " .. LocalPlayer():getChar():getDamage() )
 		Cat1:Add( "Critical Strike Chance:  " .. LocalPlayer():getChar():getCriticalChance() .. "%" )
 		Cat1:Add( "Speed: " .. LocalPlayer():GetRunSpeed() )
+		Cat1:Add( "Life Steal: " .. LocalPlayer():getChar():getLifeSteal() )
 		CatList:InvalidateLayout( true )
 
 		self.SkillsBar = self:Add("DPanel")

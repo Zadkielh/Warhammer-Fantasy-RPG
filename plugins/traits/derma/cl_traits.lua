@@ -41,10 +41,16 @@ function PANEL:Init()
 		local lastpanel
 		local x, y = 10, 60
 		local test = 1
-		for k, v in pairs(nut.traitCategories.list) do
+		for k, v in pairs(nut.skillCategories.list) do
 			local char = LocalPlayer():getChar()
 			if (char) then
-				if v.class == char:getClass() then
+				if istable(v.class) then
+					for _, class in pairs(v.class) do
+						if class == char:getClass() then
+							v.order = 1
+						end
+					end
+				elseif v.class == char:getClass() then
 					v.order = 1
 				end
 			end

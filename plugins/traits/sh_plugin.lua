@@ -222,6 +222,10 @@ function charMeta:OnAquireTrait(key)
 	end
 end
 
+function charMeta:getLifeSteal()
+	return self:getData("lifeSteal", 0)
+end
+
 
 if (SERVER)	then
 	netstream.Hook("AquireTrait", function(client, data)
@@ -237,6 +241,9 @@ end
 
 function PLUGIN:PostPlayerLoadout(client)
 	
+	client:getChar():setData("bloodpool", 0)
+	client:getChar():setData("lifeSteal", 0)
+
 	if !(istable(client:getChar():getTraits())) then
 		self:setData("Traits", {})
 	end
@@ -252,6 +259,8 @@ function PLUGIN:PostPlayerLoadout(client)
 
 end
 
+
+
 hook.Add("EntityTakeDamage", "traitModifiers", function(Entity, dmg)
 
 	if dmg:GetAttacker():IsPlayer() then
@@ -260,13 +269,12 @@ hook.Add("EntityTakeDamage", "traitModifiers", function(Entity, dmg)
 		local char = ply:getChar()
 
 		if char:hasTrait("blooddrinker") then
-			
-			local heal = (dmg:GetDamage()*0.3) 
-			print(heal)
+			local lifeSteal = char:getData("lifeSteal", 0)
+			local heal = (dmg:GetDamage()*(lifeSteal / 100) ) 
 			ply:SetHealth(math.Clamp(heal + ply:Health(), ply:Health(), ply:GetMaxHealth()))
-
+			local bloodPool = char:getData("bloodpool", 0)
 			local current = ply:getLocalVar("mana", 0)
-			local blood = math.Clamp(current + heal, 0, 100)
+			local blood = math.Clamp(current + (heal *0.5), 0, bloodPool)
 			ply:setLocalVar("mana", blood)
 		end
     end
