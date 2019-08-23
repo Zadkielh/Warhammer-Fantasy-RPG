@@ -1,7 +1,7 @@
 SKILL.name = "Dark Hand of Destruction"
 
-SKILL.LevelReq = 1
-SKILL.SkillPointCost = 0
+SKILL.LevelReq = 5
+SKILL.SkillPointCost = 1
 SKILL.Incompatible = {
 
 }

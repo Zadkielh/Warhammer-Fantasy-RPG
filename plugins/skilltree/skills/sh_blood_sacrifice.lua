@@ -27,7 +27,7 @@ Class Restriction: Chaos Warrior, Reaver
 ]]
 
 
-SKILL.coolDown = 10
+SKILL.coolDown = 30
 local function ability( SKILL, ply )
     local nospam = ply:GetNWBool( "nospamAOE" ) // nospamRanged, nospamUlt, nospamAOE, nospamMelee
 	if (nospam) then

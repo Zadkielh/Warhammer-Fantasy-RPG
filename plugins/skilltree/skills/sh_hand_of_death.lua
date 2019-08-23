@@ -1,6 +1,6 @@
 SKILL.name = "Hand of Death"
 
-SKILL.LevelReq = 1
+SKILL.LevelReq = 5
 SKILL.SkillPointCost = 0
 SKILL.Incompatible = {
 

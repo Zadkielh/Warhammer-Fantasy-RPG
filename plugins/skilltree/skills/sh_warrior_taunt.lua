@@ -1,6 +1,6 @@
 SKILL.name = "Taunt"
 
-SKILL.LevelReq = 1
+SKILL.LevelReq = 5
 SKILL.SkillPointCost = 1
 SKILL.Incompatible = {
 }
@@ -27,7 +27,7 @@ Class Restriction: Statestroop, Reaver
 ]]
 
 
-SKILL.coolDown = 10
+SKILL.coolDown = 30
 local function ability( SKILL, ply )
     local nospam = ply:GetNWBool( "nospamAOE" ) // nospamRanged, nospamUlt, nospamAOE, nospamMelee
 	if (nospam) then
@@ -48,6 +48,7 @@ local function ability( SKILL, ply )
 			for k, v in pairs(Entities) do
 				if v:IsNPC() and v:Disposition(ply) != D_LI then
 					v:SetEnemy( ply, true )
+					v:UpdateEnemyMemory( ply, ply:GetPos() )
 				end
 			end
 		end

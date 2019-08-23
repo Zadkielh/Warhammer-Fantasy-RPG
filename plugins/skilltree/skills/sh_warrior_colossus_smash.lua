@@ -1,6 +1,6 @@
 SKILL.name = "Colossus Smash"
 
-SKILL.LevelReq = 1
+SKILL.LevelReq = 10
 SKILL.SkillPointCost = 1
 SKILL.Incompatible = {
 }
@@ -29,7 +29,7 @@ Class Restriction: Statestroop, Reaver
 ]]
 
 
-SKILL.coolDown = 10
+SKILL.coolDown = 30
 local function ability( SKILL, ply )
     local nospam = ply:GetNWBool( "nospamUlt" ) // nospamRanged, nospamUlt, nospamAOE, nospamMelee
 	if (nospam) then

@@ -1,6 +1,6 @@
 SKILL.name = "Cerulean Shield"
 
-SKILL.LevelReq = 1
+SKILL.LevelReq = 5
 SKILL.SkillPointCost = 0
 SKILL.Incompatible = {
 
@@ -28,7 +28,7 @@ Skill Point Cost:]] .. SKILL.SkillPointCost .. [[
     
 ]]
 
-SKILL.coolDown = 2
+SKILL.coolDown = 60
 
 local function ability(SKILL, ply )
    local nospam = ply:GetNWBool( "nospamMelee" )

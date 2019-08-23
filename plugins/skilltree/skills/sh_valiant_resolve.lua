@@ -1,7 +1,7 @@
 SKILL.name = "Bolstered Resolve"
 
-SKILL.LevelReq = 1
-SKILL.SkillPointCost = 0
+SKILL.LevelReq = 5
+SKILL.SkillPointCost = 1
 SKILL.Incompatible = {
 
 }
@@ -34,7 +34,7 @@ Class Restriction: Statestroop
 ]]
 
 
-SKILL.coolDown = 10
+SKILL.coolDown = 30
 local function ability( SKILL, ply )
     local nospam = ply:GetNWBool( "nospamAOE" ) // nospamRanged, nospamUlt, nospamAOE, nospamMelee
 	if (nospam) then

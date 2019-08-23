@@ -1,7 +1,7 @@
 SKILL.name = "Azure Blades"
 
-SKILL.LevelReq = 1
-SKILL.SkillPointCost = 0
+SKILL.LevelReq = 5
+SKILL.SkillPointCost = 1
 SKILL.Incompatible = {
 
 }
@@ -29,7 +29,7 @@ Skill Point Cost:]] .. SKILL.SkillPointCost .. [[
     
 ]]
 
-SKILL.coolDown = 2
+SKILL.coolDown = 15
 
 local function ability(SKILL, ply )
    local nospam = ply:GetNWBool( "nospamRanged" )

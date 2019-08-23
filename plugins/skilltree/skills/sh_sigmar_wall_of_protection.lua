@@ -1,7 +1,7 @@
 SKILL.name = "Wall of Protection"
 
-SKILL.LevelReq = 1
-SKILL.SkillPointCost = 0
+SKILL.LevelReq = 10
+SKILL.SkillPointCost = 3
 SKILL.Incompatible = {
 
 }
@@ -28,14 +28,14 @@ Skill Point Cost:]] .. SKILL.SkillPointCost .. [[
     
 ]]
 
-SKILL.coolDown = 2
+SKILL.coolDown = 30
 
 local function ability(SKILL, ply )
-   local nospam = ply:GetNWBool( "nospamMelee" )
+   local nospam = ply:GetNWBool( "nospamUlt" )
 	if (nospam) then 
-		if timer.Exists(ply:SteamID().."nospamMelee") then return  end
-		timer.Create(ply:SteamID().."nospamMelee", SKILL.coolDown, 1, function()
-			ply:SetNWBool( "nospamMelee", false )
+		if timer.Exists(ply:SteamID().."nospamUlt") then return  end
+		timer.Create(ply:SteamID().."nospamUlt", SKILL.coolDown, 1, function()
+			ply:SetNWBool( "nospamUlt", false )
 		end)
 		return
 	end
@@ -134,14 +134,14 @@ local function ability(SKILL, ply )
 
 
 	if (SERVER) then
-		ply:SetNWBool( "nospamMelee", true )
+		ply:SetNWBool( "nospamUlt", true )
 
-		net.Start( "MeleeActivated" )
+		net.Start( "UltActivated" )
 		net.Send( ply )
 
-		if timer.Exists(ply:SteamID().."nospamMelee") then return  end
-			timer.Create(ply:SteamID().."nospamMelee", SKILL.coolDown, 1, function()
-				ply:SetNWBool( "nospamMelee", false )
+		if timer.Exists(ply:SteamID().."nospamUlt") then return  end
+			timer.Create(ply:SteamID().."nospamUlt", SKILL.coolDown, 1, function()
+				ply:SetNWBool( "nospamUlt", false )
 			end)
 
 	end

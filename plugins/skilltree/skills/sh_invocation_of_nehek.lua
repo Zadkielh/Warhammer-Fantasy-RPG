@@ -13,7 +13,7 @@ SKILL.category = "Lore of Undeath"-- Common Passives, Warrior, Lore of Light, Lo
 
 SKILL.slot = "ULT" -- ULT, RANGED, MELEE, AOE, PASSIVE
 SKILL.class = {
-    "asp_sorcerer"
+   -- "asp_sorcerer"
 }
 
 SKILL.desc = [[

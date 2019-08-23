@@ -1,7 +1,7 @@
 SKILL.name = "Burn"
 
-SKILL.LevelReq = 1
-SKILL.SkillPointCost = 0
+SKILL.LevelReq = 2
+SKILL.SkillPointCost = 1
 SKILL.Incompatible = {
 
 }
@@ -27,6 +27,8 @@ Level Requirement: ]] .. SKILL.LevelReq .. [[
 Skill Point Cost:]] .. SKILL.SkillPointCost .. [[
     
 ]]
+
+SKILL.coolDown = 5
 
 local function ability(SKILL, ply )
    local nospam = ply:GetNWBool( "nospamRanged" )

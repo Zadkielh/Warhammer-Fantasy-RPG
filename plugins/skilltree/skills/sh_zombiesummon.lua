@@ -1,7 +1,7 @@
 SKILL.name = "Bloodletter Summoning"
 
-SKILL.LevelReq = 1
-SKILL.SkillPointCost = 0
+SKILL.LevelReq = 15
+SKILL.SkillPointCost = 3
 SKILL.Incompatible = {
 
 }
@@ -31,7 +31,7 @@ Skill Point Cost:]] .. SKILL.SkillPointCost .. [[
     
 ]]
 
-SKILL.coolDown = 5
+SKILL.coolDown = 120
 
 local function ability(SKILL, ply )
     local nospam = ply:GetNWBool( "nospamUlt" ) // nospamRanged, nospamUlt, nospamAOE, nospamMelee

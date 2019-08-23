@@ -1,7 +1,7 @@
 SKILL.name = "Chillwind"
 
-SKILL.LevelReq = 1
-SKILL.SkillPointCost = 0
+SKILL.LevelReq = 10
+SKILL.SkillPointCost = 2
 SKILL.Incompatible = {
 
 }
@@ -31,7 +31,7 @@ Skill Point Cost:]] .. SKILL.SkillPointCost .. [[
 
 ]]
 
-SKILL.coolDown = 5
+SKILL.coolDown = 30
 
 local function ability(SKILL, ply )
     local nospam = ply:GetNWBool( "nospamAOE" ) // nospamRanged, nospamUlt, nospamAOE, nospamMelee

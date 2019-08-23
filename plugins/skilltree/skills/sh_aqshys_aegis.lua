@@ -2,8 +2,8 @@ SKILL.name = "Aqshy's Aegis"
 
 SKILL.IconX = 1
 SKILL.IconY = 1
-SKILL.LevelReq = 1
-SKILL.SkillPointCost = 0
+SKILL.LevelReq = 5
+SKILL.SkillPointCost = 1
 SKILL.Incompatible = {
 
 }

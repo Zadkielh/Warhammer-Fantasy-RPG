@@ -1,7 +1,7 @@
 SKILL.name = "Fire Shield"
 
-SKILL.LevelReq = 1
-SKILL.SkillPointCost = 0
+SKILL.LevelReq = 10
+SKILL.SkillPointCost = 2
 SKILL.Incompatible = {
 
 }
@@ -28,7 +28,7 @@ Skill Point Cost:]] .. SKILL.SkillPointCost .. [[
     
 ]]
 
-SKILL.coolDown = 2
+SKILL.coolDown = 30
 
 local function ability(SKILL, ply )
    local nospam = ply:GetNWBool( "nospamMelee" )

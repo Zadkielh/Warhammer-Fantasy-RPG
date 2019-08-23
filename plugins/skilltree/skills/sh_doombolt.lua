@@ -2,8 +2,8 @@ SKILL.name = "Doombolt"
 
 SKILL.IconX = 1
 SKILL.IconY = 1
-SKILL.LevelReq = 1
-SKILL.SkillPointCost = 0
+SKILL.LevelReq = 2
+SKILL.SkillPointCost = 1
 SKILL.Incompatible = {
 
 }
@@ -22,11 +22,10 @@ SKILL.class = {
 SKILL.desc = [[
 The caster hurls a bolt of blazing black fire at his foe.
 
-Supply: 1200 Rounds
-Cost: 100 Energy
+Cost: 20 Energy
 Cooldown: 120 Seconds.
-Class Restriction: Techmarine
-Ability Slot: 4
+Class Restriction: Sorcerer
+Ability Slot: 2
 
 Level Requirement: ]] .. SKILL.LevelReq .. [[
 

@@ -1,6 +1,6 @@
 SKILL.name = "Sigmars Smite"
 
-SKILL.LevelReq = 1
+SKILL.LevelReq = 10
 SKILL.SkillPointCost = 1
 SKILL.Incompatible = {
 
@@ -35,7 +35,7 @@ Skill Point Cost:]] .. SKILL.SkillPointCost .. [[
 ]]
 
 
-SKILL.coolDown = 2
+SKILL.coolDown = 15
 local function ability(SKILL, ply )
    local nospam = ply:GetNWBool( "nospamRanged" )
 	if (nospam) then 

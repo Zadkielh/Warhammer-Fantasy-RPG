@@ -1,6 +1,6 @@
 SKILL.name = "Blood Rush"
 
-SKILL.LevelReq = 5
+SKILL.LevelReq = 10
 SKILL.SkillPointCost = 2
 SKILL.Incompatible = {
 }
@@ -33,7 +33,7 @@ Class Restriction: Chaos Warrior, Reaver
 ]]
 
 
-SKILL.coolDown = 10
+SKILL.coolDown = 60
 local function ability( SKILL, ply )
     local nospam = ply:GetNWBool( "nospamUlt" ) // nospamRanged, nospamUlt, nospamAOE, nospamMelee
 	if (nospam) then

@@ -1,6 +1,6 @@
 SKILL.name = "Ravenous Carnivore"
 
-SKILL.LevelReq = 5
+SKILL.LevelReq = 2
 SKILL.SkillPointCost = 2
 SKILL.Incompatible = {
 }
@@ -26,7 +26,7 @@ Class Restriction: Chaos Warrior, Reaver
 ]]
 
 
-SKILL.coolDown = 10
+SKILL.coolDown = 15
 local function ability( SKILL, ply )
     local nospam = ply:GetNWBool( "nospamMelee" ) // nospamRanged, nospamUlt, nospamAOE, nospamMelee
 	if (nospam) then

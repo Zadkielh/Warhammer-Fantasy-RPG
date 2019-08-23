@@ -1,6 +1,6 @@
 SKILL.name = "Mortal Strike"
 
-SKILL.LevelReq = 1
+SKILL.LevelReq = 5
 SKILL.SkillPointCost = 1
 SKILL.Incompatible = {
 }
@@ -29,7 +29,7 @@ Class Restriction: Statestroop, Reaver
 ]]
 
 
-SKILL.coolDown = 10
+SKILL.coolDown = 20
 local function ability( SKILL, ply )
     local nospam = ply:GetNWBool( "nospamMelee" ) // nospamRanged, nospamUlt, nospamAOE, nospamMelee
 	if (nospam) then
