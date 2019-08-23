@@ -1,4 +1,4 @@
-ITEM.name = "Steel Helmet"
+ITEM.name = "Chaos Helmet (Rare)"
 ITEM.model = "models/Gibs/HGIBS.mdl"
 ITEM.width = 1
 ITEM.height = 1
@@ -6,16 +6,22 @@ ITEM.category = "Armour"
 ITEM.ability = {
 }
 ITEM.traits = {
-	hp = 40,
-	hpregen = 0,
-	armorrating = 100,
-	shield = 10,
-    shieldregen = 0.1,
+	hp = 300,
+	hpregen = 20,
+	armorrating = 75,
+	shield = 100,
+    shieldregen = 25,
 	damage = 0,
 	attribReq = {
-		str = 10,
-		con = 10
-	}
+		str = 0,
+		con = 0
+	},
+	speed = -10
+}
+ITEM.levelRequirement = 15
+ITEM.class = {
+	"reaver",
+	"chaos_warrior"
 }
 local hp, hpregen, armorrating, shield, shieldregen, damage, attribs = ITEM:getItemStats()
 local stats = [[
@@ -27,11 +33,12 @@ local stats = [[
 	<color=255, 255, 0> +]] .. shieldregen .. [[ Shield/5s </color>
 	<color=204, 255, 255> +]] .. damage .. [[ Damage </color>
 
-
-	<color=100, 205, 100> ]] .. table.ToString(attribs, "Attribute Requirements", true) .. [[ </color>
-
 ]]
 ITEM.desc = [[
+	Level: 15
+	Class: All
+	Strength: 0
+	Constitution: 0
 
     ITEM STATS: <color=39, 174, 96>]] .. stats .. [[ </color> 
 ]]
@@ -43,6 +50,22 @@ ITEM.pacData = {
 		["children"] = {
 			[1] = {
 				["children"] = {
+					[1] = {
+							["children"] = {
+							},
+							["self"] = {
+								["ModelIndex"] = 2,
+								["UniqueID"] = "202228707",
+								["AimPartUID"] = "",
+								["Hide"] = false,
+								["Name"] = "",
+								["ClassName"] = "bodygroup",
+								["OwnerName"] = "self",
+								["IsDisturbing"] = false,
+								["EditorExpand"] = false,
+								["BodyGroupName"] = "head",
+							},
+						},
 				},
 				["self"] = {
 					["BoneMerge"]	=	true,

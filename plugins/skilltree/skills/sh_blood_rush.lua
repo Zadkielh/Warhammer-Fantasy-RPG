@@ -77,9 +77,11 @@ local function ability( SKILL, ply )
 
     ply:SetHealth(ply:Health() + health)
     ply:SetMaxHealth(ply:GetMaxHealth() + health)
+
+    ply:SetMaterial("models/rendertarget")
                 
     timer.Create("valiant_resolveParticle"..(ply:SteamID()), 0.25, 4, function()
-        ParticleEffectAttach( "40k_assault_valiant", PATTACH_ABSORIGIN_FOLLOW, ply, 0 )
+        ParticleEffectAttach("fantasy_khorne_enhance_ultimate", PATTACH_POINT_FOLLOW, ply, 3)
     end)
 
     timer.Create("valiant_resolve"..(ply:SteamID()), 10, 1, function()
@@ -94,6 +96,8 @@ local function ability( SKILL, ply )
 
             ply:SetHealth(ply:Health() - health)
             ply:SetMaxHealth(MaxHealth)
+
+            ply:SetMaterial("")
 
         end
                     

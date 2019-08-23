@@ -42,10 +42,10 @@ local function ability( SKILL, ply )
 
     local bloodPool = ply:getChar():getData("bloodpool", 0)
     local mana = ply:getLocalVar("mana", 0)
-        if mana < bloodPool then
+        if mana < 1 then
             return
         end
-    ply:setLocalVar("mana", mana - bloodPool)
+    ply:setLocalVar("mana", mana - 1)
 
     local char = ply:getChar()
         
@@ -55,7 +55,7 @@ local function ability( SKILL, ply )
 
     hook.Add("ShouldCollide", "warhammerfantasy_bloodShield_physhandler" .. ply:SteamID(), function(ent1, ent2)
 		if ( IsValid( ent1 ) and IsValid( ent2 ) ) then
-            if ent1 == ply and !( ent2:IsNPC() or ent2:IsPlayer() ) and (ent2:GetVelocity() > 300)then
+            if ent1 == ply and !( ent2:IsNPC() or ent2:IsPlayer() ) and (ent2:GetVelocity():Length() > 300)then
                 local effectdata = EffectData()
                 effectdata:SetOrigin( ent2:GetPos() )
                 util.Effect( "cball_explode", effectdata )
@@ -73,7 +73,7 @@ local function ability( SKILL, ply )
 
 
     timer.Create("valiant_resolveParticle"..(ply:SteamID()), 0.25, 4, function()
-        ParticleEffectAttach( "40k_assault_valiant", PATTACH_ABSORIGIN_FOLLOW, ply, 0 )
+        ParticleEffectAttach( "fantasy_khorne_enhance", PATTACH_POINT_FOLLOW, ply, 1 )
     end)
     
 

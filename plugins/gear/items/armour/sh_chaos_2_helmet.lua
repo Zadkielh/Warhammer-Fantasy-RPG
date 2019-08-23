@@ -1,4 +1,4 @@
-ITEM.name = "Chaos Helmet"
+ITEM.name = "Chaos Helmet (Common)"
 ITEM.model = "models/Gibs/HGIBS.mdl"
 ITEM.width = 1
 ITEM.height = 1
@@ -54,7 +54,7 @@ ITEM.pacData = {
 							["children"] = {
 							},
 							["self"] = {
-								["ModelIndex"] = 38,
+								["ModelIndex"] = 22,
 								["UniqueID"] = "202228707",
 								["AimPartUID"] = "",
 								["Hide"] = false,

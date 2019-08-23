@@ -44,9 +44,31 @@ local function ability( SKILL, ply )
             end
         ply:setLocalVar("mana", mana - 60)
 
-        ply:SetNWBool("RavCarni", true )
-        local lifeSteal = ply:getChar():getData("lifeSteal", 0)
-        ply:getChar():setData("lifeSteal", lifeSteal + 50)
+        
+
+		if !(ply:GetNWBool("RavCarni" )) then
+			local lifeSteal = ply:getChar():getData("lifeSteal", 0)
+			ply:getChar():setData("lifeSteal", lifeSteal + 50)
+		
+			local bone = ply:LookupBone( "ValveBiped.Bip01_R_Hand" )
+			local bonePos = ply:GetBonePosition(bone)
+
+			timer.Simple(0, function()
+				ParticleEffectAttach("fantasy_khorne_enhance_extra", PATTACH_POINT_FOLLOW, ply, 5)
+			end)
+
+			timer.Simple(10, function()
+
+				if (ply:GetNWBool("RavCarni")) then
+					print("Carni.Remove1")
+					local lifeSteal = ply:getChar():getData("lifeSteal", 0)
+					ply:getChar():setData("lifeSteal", math.max(lifeSteal -50))
+					ply:SetNWBool("RavCarni", false)
+				end
+			end)
+		end
+
+		ply:SetNWBool("RavCarni", true )
 
     
 

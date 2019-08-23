@@ -241,6 +241,12 @@ function ITEM:onCanBeTransfered(oldInventory, newInventory)
 	return true
 end
 
+function ITEM:onLoadout()
+	if (self:getData("equip") and self.player.addPart) then
+		self.player:addPart(self.uniqueID)
+	end
+end
+
 function ITEM:onRemoved()
 	local inv = nut.item.inventories[self.invID]
 	local receiver = inv.getReceiver and inv:getReceiver()

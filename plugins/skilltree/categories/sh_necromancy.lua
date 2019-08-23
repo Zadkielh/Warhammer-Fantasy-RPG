@@ -10,4 +10,4 @@ CAT.desc = [[
 ]]
 
 CAT.uniqueID = CAT_NECROMANCY
-CAT.order = 1
+CAT.order = 10

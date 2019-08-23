@@ -54,11 +54,11 @@ local function ability( SKILL, ply )
                 
         targetChar:setData("naturalDamage", damage)
                 
-        timer.Create("valiant_resolveParticle"..(ply:SteamID()), 0.25, 4, function()
-            ParticleEffectAttach( "40k_assault_valiant", PATTACH_ABSORIGIN_FOLLOW, ply, 0 )
+        timer.Simple(0, function()
+            ParticleEffectAttach("fantasy_khorne_enhance_great", PATTACH_POINT_FOLLOW, ply, 3)
         end)
 
-        timer.Create("valiant_resolve"..(ply:SteamID()), 10, 1, function()
+        timer.Create("blood_sacrifice"..(ply:SteamID()), 10, 1, function()
             if (targetChar) then
                 targetChar:setData("naturalDamage", naturalDamage)
             end
@@ -78,8 +78,8 @@ local function ability( SKILL, ply )
                 
         targetChar:setData("naturalDamage", damage)
                 
-        timer.Create("valiant_resolveParticle"..(ply:SteamID()), 0.25, 4, function()
-            ParticleEffectAttach( "40k_assault_valiant", PATTACH_ABSORIGIN_FOLLOW, ply, 0 )
+        timer.Simple(0, function()
+            ParticleEffectAttach("fantasy_khorne_enhance_great", PATTACH_POINT_FOLLOW, ply, 3)
         end)
 
         timer.Create("blood_sacrifice"..(ply:SteamID()), 10, 1, function()

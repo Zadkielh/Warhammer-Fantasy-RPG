@@ -802,7 +802,6 @@ end
 
 function charMeta:GetPoolLimit()
 	local SummonerLimit = self:getData("SummonerLimit", 5)
-	print(SummonerLimit)
 	return SummonerLimit
 end
 
@@ -868,9 +867,69 @@ hook.Add("EntityTakeDamage", "skillMods", function(Entity, dmg)
 
 		if (ply:GetNWBool("RavCarni")) then
 			timer.Simple(0.05, function()
+				
 				local lifeSteal = char:getData("lifeSteal", 0)
-				char:setData("lifeSteal", lifeSteal -50)
+				print("Carni.Remove2", lifeSteal)
+				char:setData("lifeSteal", math.max(0, lifeSteal -50))
 				ply:SetNWBool("RavCarni", false)
+			end)
+		end
+
+		if (ply:GetNWBool("SigmarHammer" )) then
+			timer.Simple(0.05, function()
+				local naturalDamage = char:getData("naturalDamage",0)
+				local faith = char:getAttrib("fth")
+				local damage = naturalDamage - (faith * 2) - 100
+				char:setData("naturalDamage", damage)
+				ply:SetNWBool("SigmarHammer", false)
+			end)
+		end
+
+		if (ply:GetNWBool("WarriorCleave" )) then
+			timer.Simple(0.05, function()
+				local naturalDamage = char:getData("naturalDamage",0)
+				local str = char:getAttrib("str")
+				local damage = naturalDamage - (str * 2) - 100
+				char:setData("naturalDamage", damage)
+				ply:SetNWBool("WarriorCleave", false)
+			end)
+		end
+
+		if (ply:GetNWBool("MortalStrike" )) then
+			timer.Simple(0.05, function()
+				local naturalDamage = char:getData("naturalDamage",0)
+				local str = char:getAttrib("str")
+				local damage = naturalDamage - (str * 5) - 100
+				char:setData("naturalDamage", damage)
+				ply:SetNWBool("MortalStrike", false)
+				if Entity:IsPlayer() then
+					local targetChar = Entity:getChar()
+					Entity:SetNWBool("RegenDisable", true)
+					timer.Simple(10, function()
+						Entity:SetNWBool("RegenDisable", false)
+						Entity:HealthRegeneration()
+					end)
+				end
+				
+			end)
+		end
+
+		if (ply:GetNWBool("ColiSmash" )) then
+			timer.Simple(0.05, function()
+				local naturalDamage = char:getData("naturalDamage",0)
+				local str = char:getAttrib("str")
+				local damage = naturalDamage - (str * 5) - 100
+				char:setData("naturalDamage", damage)
+				ply:SetNWBool("ColiSmash", false)
+				if Entity:IsPlayer() then
+					local targetChar = Entity:getChar()
+					local armor = Entity:getData("naturalArmorRating")
+					targetChar:setData("naturalArmorRating", armor - 200)
+					timer.Simple(10, function()
+						targetChar:setData("naturalArmorRating", armor)
+					end)
+				end
+				
 			end)
 		end
     end

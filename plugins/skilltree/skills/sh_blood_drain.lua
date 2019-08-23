@@ -44,7 +44,7 @@ local function ability( SKILL, ply )
     local mana = ply:getLocalVar("mana", 0)
         
     if mana < 100 then
-       return
+       ply:TakeDamage(100, ply, ply)
     end
     ply:setLocalVar("mana", mana - 100)
 
@@ -58,10 +58,16 @@ local function ability( SKILL, ply )
 
     for k, v in pairs(Entities) do
 		if ((v:IsNPC() and v:Disposition( ply ) == D_HT) or v:IsPlayer()) then
-			v:TakeDamage(50 + (targetChar:getAttrib("str") + (targetChar:getAttrib("fth") *2)) , ply, ply)
-            timer.Simple(0.1, function()
-               ParticleEffectAttach( "fantasy_heal", PATTACH_ABSORIGIN_FOLLOW, v, 0 )
-            end)
+			if !(v == ply) then 
+				timer.Create("bloodDrain"..v:EntIndex(), 0.25, 10, function()
+					if IsValid(v) then
+						v:TakeDamage(10 + (targetChar:getAttrib("str") + (targetChar:getAttrib("fth") *2)) , ply, ply)
+					end
+				end)
+				timer.Simple(0.1, function()
+					ParticleEffectAttach( "fantasy_khorne_blood", PATTACH_POINT_FOLLOW, v, 3 )
+				end)
+			end
 		end
 	end
     

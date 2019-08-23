@@ -1,4 +1,4 @@
-ITEM.name = "Chaos Platemail"
+ITEM.name = "Chaos Platemail (Common)"
 ITEM.model = "models/Gibs/HGIBS.mdl"
 ITEM.width = 1
 ITEM.height = 1
@@ -17,6 +17,11 @@ ITEM.traits = {
 		con = 0
 	},
 	speed = 0
+}
+ITEM.levelRequirement = 0
+ITEM.class = {
+	"reaver",
+	"chaos_warrior"
 }
 local hp, hpregen, armorrating, shield, shieldregen, damage, attribs = ITEM:getItemStats()
 local stats = [[
@@ -49,7 +54,7 @@ ITEM.pacData = {
 							["children"] = {
 							},
 							["self"] = {
-							["ModelIndex"] = 30,
+							["ModelIndex"] = 19,
 							["UniqueID"] = "202228707",
 							["AimPartUID"] = "",
 							["Hide"] = false,

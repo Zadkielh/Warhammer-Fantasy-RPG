@@ -47,7 +47,7 @@ local function ability( SKILL, ply )
 
     ply:SetHealth(math.Clamp(bloodPool + ply:Health(), ply:Health(), ply:GetMaxHealth()))
     timer.Simple(0.1, function()
-        ParticleEffectAttach( "fantasy_heal", PATTACH_ABSORIGIN_FOLLOW, ply, 0 )
+        ParticleEffectAttach( "fantasy_khorne_blood_2", PATTACH_ABSORIGIN_FOLLOW, ply, 0 )
     end)
 
     

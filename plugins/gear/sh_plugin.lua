@@ -166,7 +166,7 @@ do
             local shield = 0
             local MaxHp = char:getMaxHealth()
             local walkSpeed = self:GetNWFloat("walkSpeed") or 130
-            local runSpeed = self:SetNWFloat("runSpeed") or 235
+            local runSpeed = self:GetNWFloat("runSpeed") or 235
 
             self:SetMaxHealth(MaxHp)
 
@@ -190,13 +190,14 @@ do
             if timer.Exists(uniqueID) then
                 timer.Remove(uniqueID)
             end
-
-            timer.Create(uniqueID, 0.25, 0, function()
-                if IsValid(self) then
-                    self:SetHealth(math.Clamp( self:Health() + hp, 0, self:GetMaxHealth() ))
-                    self:SetArmor(math.Clamp(self:Armor() + shieldreg, 0, shield))
-                end
-            end)
+            if !(self:GetNWBool("RegenDisable")) then
+                timer.Create(uniqueID, 0.25, 0, function()
+                    if IsValid(self) then
+                        self:SetHealth(math.Clamp( self:Health() + hp, 0, self:GetMaxHealth() ))
+                        self:SetArmor(math.Clamp(self:Armor() + shieldreg, 0, shield))
+                    end
+                end)
+            end
         end
     end
 
@@ -245,6 +246,7 @@ end)
 
 hook.Add("PostPlayerLoadout", "EquipmentModifiers", function(client)
 
+    timer.Simple(0.1, function()
     local char = client:getChar()
     local items = char:getInv():getItems()
 
@@ -270,6 +272,6 @@ hook.Add("PostPlayerLoadout", "EquipmentModifiers", function(client)
     client:SetMaxHealth(MaxHp)
     client:SetArmor(shield)
     client:HealthRegeneration()
-
+    end)
 end
 )
