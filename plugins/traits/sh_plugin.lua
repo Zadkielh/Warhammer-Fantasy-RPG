@@ -268,15 +268,13 @@ hook.Add("EntityTakeDamage", "traitModifiers", function(Entity, dmg)
         local ply = dmg:GetAttacker()
 		local char = ply:getChar()
 
-		if char:hasTrait("blooddrinker") then
-			local lifeSteal = char:getData("lifeSteal", 0)
-			local heal = (dmg:GetDamage()*(lifeSteal / 100) ) 
-			ply:SetHealth(math.Clamp(heal + ply:Health(), ply:Health(), ply:GetMaxHealth()))
-			local bloodPool = char:getData("bloodpool", 0)
-			local current = ply:getLocalVar("mana", 0)
-			local blood = math.Clamp(current + (heal *0.5), 0, bloodPool)
-			ply:setLocalVar("mana", blood)
-		end
+		local lifeSteal = char:getData("lifeSteal", 0)
+		local heal = (dmg:GetDamage()*(lifeSteal / 100) ) 
+		ply:SetHealth(math.Clamp(heal + ply:Health(), ply:Health(), ply:GetMaxHealth()))
+		local bloodPool = char:getData("bloodpool", 0)
+		local current = ply:getLocalVar("mana", 0)
+		local blood = math.Clamp(current + (heal *0.5), 0, bloodPool)
+		ply:setLocalVar("mana", blood)
     end
 end)
 

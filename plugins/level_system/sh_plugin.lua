@@ -78,48 +78,15 @@ hook.Add("EntityTakeDamage", "sharedXpOnNpcDamaged", function(Entity, dmg)
 
 	for k, v in pairs(NPC_XP) do
 		if attacker:GetClass() == v.class then
-				
+			
+			if !(NPC_STATS[entID].Level) then
+				NPC_STATS[entID].Level = v.maxlevel/2
+			end
 			damage = damage + (damage / 100 * NPC_STATS[entID].Level * v.damagemulti)
 			dmg:SetDamage(damage)
 
 		end
 	end
-
-	if Entity:IsPlayer() then
-		if (Entity:Health() <= (Entity:GetMaxHealth() * 0.25)) and Entity:getChar():hasSkill("last_breath") then
-			if !(Entity:GetNWBool("lastBreath")) then
-				print("activated")
-				local walkSpeed = Entity:GetNWFloat("walkSpeed")
-				local runSpeed = Entity:GetNWFloat("runSpeed")
-				
-				Entity:SetWalkSpeed(walkSpeed + 100)
-				Entity:SetRunSpeed(runSpeed + 100)
-
-				dmg:SetDamage(dmg:GetDamage() * 0.25)
-				Entity:SetNWBool("lastBreath", true)
-				timer.Simple(5, function()
-					Entity:SetWalkSpeed(walkSpeed)
-					Entity:SetRunSpeed(runSpeed)
-				end)
-				
-				timer.Create("skill.LastBreath"..Entity:SteamID(), 60, 1, function()
-					if IsValid(Entity) then
-						Entity:SetNWBool("lastBreath", false)
-						
-					end
-				end)
-			else
-				if !(timer.Exists("skill.LastBreath"..Entity:SteamID())) then
-					timer.Create("skill.LastBreath"..Entity:SteamID(), 60, 1, function()
-						if IsValid(Entity) then
-							Entity:SetNWBool("lastBreath", false)
-						end
-					end)
-				end
-			end
-		end
-    end
-
     
 end)
 

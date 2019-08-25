@@ -3,7 +3,7 @@ function PLUGIN:OnNPCKilled( npc, attacker, inflictor )
 	if npc:IsNPC() and IsValid(npc) then
 
 		local storage = ents.Create("nut_storage_loot")
-		storage:SetPos(npc:GetPos())
+		storage:SetPos(npc:GetPos() + npc:GetUp()*50)
 		storage:SetAngles(npc:EyeAngles())
 		storage:SetAngles(npc:GetAngles())
 		storage:Spawn()

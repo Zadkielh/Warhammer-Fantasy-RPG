@@ -45,6 +45,8 @@ function ENT:CustomOnEntitySpawn(EntityName,SpawnPosition,Entities,TheEntity)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnInitialize_BeforeNPCSpawn()
+    self:SetNoDraw(false)
+	self:SetNotSolid(false)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnInitialize_AfterNPCSpawn() end
