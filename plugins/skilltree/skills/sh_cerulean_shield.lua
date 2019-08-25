@@ -8,7 +8,7 @@ SKILL.Incompatible = {
 SKILL.RequiredSkills = {
 
 }
-SKILL.icon = "vgui/skills/ability_mage_moltenarmor.png"
+SKILL.icon = "vgui/skills/spell_frost_frost.png"
 SKILL.category = "Lore of Heavens"-- Common Passives, Warrior, Lore of Light, Lore of Life
 
 SKILL.slot = "MELEE" -- ULT, RANGED, MELEE, AOE, PASSIVE

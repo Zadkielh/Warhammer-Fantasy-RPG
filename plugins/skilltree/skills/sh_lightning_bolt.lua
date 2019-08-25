@@ -1,6 +1,6 @@
 SKILL.name = "Lightning Bolt"
 
-SKILL.LevelReq = 5
+SKILL.LevelReq = 3
 SKILL.SkillPointCost = 1
 SKILL.Incompatible = {
 
@@ -8,7 +8,7 @@ SKILL.Incompatible = {
 SKILL.RequiredSkills = {
 
 }
-SKILL.icon = "vgui/skills/spell_fire_soulburn.png"
+SKILL.icon = "vgui/skills/Inv_enchant_essenceeternallarge.png"
 SKILL.category = "Lore of Heavens"-- Common Passives, Warrior, Lore of Light, Lore of Life
 
 SKILL.slot = "RANGED" -- ULT, RANGED, MELEE, AOE, PASSIVE

@@ -40,3 +40,45 @@ ITEM.desc = [[
 ITEM.icon = nut.util.getMaterial("vgui/steelarmor.png")
 ITEM.armorCategory = "head"
 ITEM.outfitCategory = "head"
+ITEM.pacData = {
+	[1] = {
+		["children"] = {
+			[1] = {
+				["children"] = {
+					[1] = {
+							["children"] = {
+							},
+							["self"] = {
+								["ModelIndex"] = 22,
+								["UniqueID"] = "202228707",
+								["AimPartUID"] = "",
+								["Hide"] = false,
+								["Name"] = "",
+								["ClassName"] = "bodygroup",
+								["OwnerName"] = "self",
+								["IsDisturbing"] = false,
+								["EditorExpand"] = false,
+								["BodyGroupName"] = "head",
+							},
+						},
+				},
+				["self"] = {
+					["BoneMerge"]	=	true,
+					["ClassName"]	=	"model",
+					["Model"]	=	"models/zadkiel/chaos/objects/heavy_head.mdl",
+					["UniqueID"]	=	"1948360431",
+				},		
+			},		
+		},
+		["self"] = {
+				["ClassName"]	=	"group",
+				["EditorExpand"]	=	true,
+				["Name"]	=	"my outfit",
+				["UniqueID"]	=	"1683170536",
+		},
+	},
+}
+
+ITEM.bodyGroups = {
+	["head"] = 1,
+}

@@ -21,7 +21,8 @@ ITEM.traits = {
 ITEM.levelRequirement = 15
 ITEM.class = {
 	"reaver",
-	"chaos_warrior"
+	"chaos_warrior",
+	"asp_sorcerer"
 }
 local hp, hpregen, armorrating, shield, shieldregen, damage, attribs = ITEM:getItemStats()
 local stats = [[

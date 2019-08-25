@@ -1,5 +1,3 @@
-
-
 -- NPC XP Table
 LootTable = {
 
@@ -22,64 +20,64 @@ LootTable = {
 	--["zombie"] = {class = "npc_zombie", itemTable = {"chaos_2_helmet", "chaos_2_legs", "chaos_2_plate"}, value = 1, weight = 20},
 	["vmp_black_knight"] = {class = "npc_zad_vmp_black_knight", itemTable = {
 		"chaos_2_helmet", "chaos_2_legs", "chaos_2_plate", "chaos_3_helmet", 
-		"chaos_3_legs", "chaos_3_plate", "sh_empire_helmet_common", "sh_empire_plate_common", 
-		"sh_empire_legs_common", "sh_empire_helmet_uncommon", "sh_empire_plate_uncommon", 
-		"sh_empire_legs_uncommon", "sh_chaos_blade_shield_common", "sh_chaos_blade_common"
+		"chaos_3_legs", "chaos_3_plate", "empire_helmet_common", "empire_plate_common", 
+		"empire_legs_common", "empire_helmet_uncommon", "empire_plate_uncommon", 
+		"empire_legs_uncommon", "chaos_blade_shield_common", "chaos_blade_common"
 		}, 
 	value = 50, weight = 100},
 
 	["vmp_blood_knight"] = {class = "npc_zad_vmp_blood_knight", itemTable = {
 		"chaos_2_helmet", "chaos_2_legs", "chaos_2_plate", "chaos_3_helmet", "chaos_3_legs",
-		"chaos_3_plate", "sh_empire_helmet_common", "sh_empire_plate_common", "sh_empire_legs_common", 
-		"sh_empire_helmet_uncommon", "sh_empire_plate_uncommon", "sh_empire_legs_uncommon"
+		"chaos_3_plate", "empire_helmet_common", "empire_plate_common", "empire_legs_common", 
+		"empire_helmet_uncommon", "empire_plate_uncommon", "empire_legs_uncommon"
 		}, 
 	value = 75, weight = 10},
 
 	["vmp_crypt_ghoul"] = {class = "npc_zad_vmp_crypt_ghoul", itemTable = {
-		"sh_chaos_light_body", "sh_chaos_light_helmet", "sh_chaos_light_leggings", "sh_empire_helmet_common", "sh_empire_plate_common", "sh_empire_legs_common"
+		"chaos_light_body", "chaos_light_helmet", "chaos_light_leggings", "empire_helmet_common", "empire_plate_common", "empire_legs_common"
 		}, 
 	value = 10, weight = 10},
 
 	["vmp_crypt_horror"] = {class = "npc_zad_vmp_crypt_horror", itemTable = {
 		"chaos_2_helmet", "chaos_2_legs", "chaos_2_plate", "chaos_3_helmet", "chaos_3_legs",
-		"chaos_3_plate", "sh_empire_helmet_common", "sh_empire_plate_common", "sh_empire_legs_common", 
-		"sh_empire_helmet_uncommon", "sh_empire_plate_uncommon", "sh_empire_legs_uncommon"
+		"chaos_3_plate", "empire_helmet_common", "empire_plate_common", "empire_legs_common", 
+		"empire_helmet_uncommon", "empire_plate_uncommon", "empire_legs_uncommon"
 		}, 
 	value = 75, weight = 10},
 
 	["vmp_skeleton_warrior_sp"] = {class = "npc_zad_vmp_skeleton_warrior_sp", itemTable = {
-		"sh_chaos_light_body", "sh_chaos_light_helmet", "sh_chaos_light_leggings", "sh_empire_helmet_common", "sh_empire_plate_common", "sh_empire_legs_common"
+		"chaos_light_body", "chaos_light_helmet", "chaos_light_leggings", "empire_helmet_common", "empire_plate_common", "empire_legs_common"
 		}, 
 	value = 10, weight = 10},
 
 	["vmp_skeleton_warrior_sws"] = {class = "npc_zad_vmp_skeleton_warrior_sws", itemTable = {
-		"sh_chaos_light_body", "sh_chaos_light_helmet", "sh_chaos_light_leggings", "sh_empire_helmet_common", "sh_empire_plate_common", "sh_empire_legs_common"
+		"chaos_light_body", "chaos_light_helmet", "chaos_light_leggings", "empire_helmet_common", "empire_plate_common", "empire_legs_common"
 		}, 
 	value = 10, weight = 10},
 
 	["vmp_wight_king"] = {class = "npc_zad_vmp_wight_king", itemTable = {
 		"chaos_2_helmet", "chaos_2_legs", "chaos_2_plate", "chaos_3_helmet", "chaos_3_legs",
-		"chaos_3_plate", "sh_empire_helmet_common", "sh_empire_plate_common", "sh_empire_legs_common", 
-		"sh_empire_helmet_uncommon", "sh_empire_plate_uncommon", "sh_empire_legs_uncommon"
+		"chaos_3_plate", "empire_helmet_common", "empire_plate_common", "empire_legs_common", 
+		"empire_helmet_uncommon", "empire_plate_uncommon", "empire_legs_uncommon"
 		}, 
 	value = 150, weight = 10},
 
 	["vmp_zombies"] = {class = "npc_zad_vmp_zombies", itemTable = {
-		"sh_chaos_light_helmet", "sh_empire_helmet_common"
+		"chaos_light_helmet", "empire_helmet_common"
 		}, 
 	value = 1, weight = 20},
 
 	["vmp_vampire_lord"] = {class = "npc_zad_vmp_vampire_lord", itemTable = {
 		"chaos_2_helmet", "chaos_2_legs", "chaos_2_plate", "chaos_3_helmet", "chaos_3_legs",
-		"chaos_3_plate", "sh_empire_helmet_common", "sh_empire_plate_common", "sh_empire_legs_common", 
-		"sh_empire_helmet_uncommon", "sh_empire_plate_uncommon", "sh_empire_legs_uncommon"
+		"chaos_3_plate", "empire_helmet_common", "empire_plate_common", "empire_legs_common", 
+		"empire_helmet_uncommon", "empire_plate_uncommon", "empire_legs_uncommon"
 		}, 
 	value = 150, weight = 10},
 
 	["vmp_dragon"] = {class = "npc_zad_vmp_dragon", itemTable = {
 		"chaos_2_helmet", "chaos_2_legs", "chaos_2_plate", "chaos_3_helmet", "chaos_3_legs",
-		"chaos_3_plate", "sh_empire_helmet_common", "sh_empire_plate_common", "sh_empire_legs_common", 
-		"sh_empire_helmet_uncommon", "sh_empire_plate_uncommon", "sh_empire_legs_uncommon", "sh_chaos_blade_rare"
+		"chaos_3_plate", "empire_helmet_common", "empire_plate_common", "empire_legs_common", 
+		"empire_helmet_uncommon", "empire_plate_uncommon", "empire_legs_uncommon", "chaos_blade_rare"
 		}, 
 	value = 500, weight = 100},
 	
@@ -130,5 +128,3 @@ LootTable = {
 	
 	*/
 }
-
-

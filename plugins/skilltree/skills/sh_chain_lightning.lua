@@ -8,7 +8,7 @@ SKILL.Incompatible = {
 SKILL.RequiredSkills = {
 
 }
-SKILL.icon = "vgui/skills/spell_fire_soulburn.png"
+SKILL.icon = "vgui/skills/Inv_enchant_essenceeternallarge.png"
 SKILL.category = "Lore of Heavens"-- Common Passives, Warrior, Lore of Light, Lore of Life
 
 SKILL.slot = "RANGED" -- ULT, RANGED, MELEE, AOE, PASSIVE

@@ -1,5 +1,5 @@
-ATTRIBUTE.name = "Psychic Power"
-ATTRIBUTE.desc = "Increases Psychic Power and Mana regen."
+ATTRIBUTE.name = "Magic Power"
+ATTRIBUTE.desc = "Increases Magic Power and Mana regen."
 ATTRIBUTE.maxValue = 100
 ATTRIBUTE.noStartBonus = false
 

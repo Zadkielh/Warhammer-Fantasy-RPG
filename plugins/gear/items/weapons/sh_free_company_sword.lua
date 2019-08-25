@@ -16,7 +16,7 @@ ITEM.traits = {
     shieldregen = 0,
 	damage = 0,
 	attribReq = {
-		str = 15,
+		str = 0,
 		con = 0
 	}
 }
