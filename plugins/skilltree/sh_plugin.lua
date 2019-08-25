@@ -353,18 +353,6 @@ function PLUGIN:PostPlayerLoadout(client)
 	if (client:GetNWBool( "hasWeaponSteroid")) then
 		client:SetNWBool("hasWeaponSteroid", false)
 	end
-	
-	for k, v in pairs(client:getChar():getSkills()) do
-		local skill = nut.skills.list[k]
-		if (skill.onAquire) then
-			timer.Simple(0.05, function()
-				skill.onAquire(skill, client:getChar())
-			end)
-		end
-	end
-
-	client:SetNWFloat("runSpeed", client:GetRunSpeed())
-	client:SetNWFloat("walkSpeed", client:GetWalkSpeed())
 
 	timer.Simple(0.1, function()
 		client:getChar():CleanSummonerPool()
@@ -440,6 +428,7 @@ end
 								else
 									ent:SetSchedule(SCHED_FORCED_GO_RUN)
 								end
+								ply:notify("Summons are moving")
 							end
 						end
 				end
@@ -867,9 +856,7 @@ hook.Add("EntityTakeDamage", "skillMods", function(Entity, dmg)
 
 		if (ply:GetNWBool("RavCarni")) then
 			timer.Simple(0.05, function()
-				
 				local lifeSteal = char:getData("lifeSteal", 0)
-				print("Carni.Remove2", lifeSteal)
 				char:setData("lifeSteal", math.max(0, lifeSteal -50))
 				ply:SetNWBool("RavCarni", false)
 			end)
@@ -880,7 +867,7 @@ hook.Add("EntityTakeDamage", "skillMods", function(Entity, dmg)
 				local naturalDamage = char:getData("naturalDamage",0)
 				local faith = char:getAttrib("fth")
 				local damage = naturalDamage - (faith * 2) - 100
-				char:setData("naturalDamage", damage)
+				char:setData("naturalDamage", math.max(0,damage))
 				ply:SetNWBool("SigmarHammer", false)
 			end)
 		end
@@ -890,7 +877,7 @@ hook.Add("EntityTakeDamage", "skillMods", function(Entity, dmg)
 				local naturalDamage = char:getData("naturalDamage",0)
 				local str = char:getAttrib("str")
 				local damage = naturalDamage - (str * 2) - 100
-				char:setData("naturalDamage", damage)
+				char:setData("naturalDamage", math.max(0,damage))
 				ply:SetNWBool("WarriorCleave", false)
 			end)
 		end
@@ -900,7 +887,7 @@ hook.Add("EntityTakeDamage", "skillMods", function(Entity, dmg)
 				local naturalDamage = char:getData("naturalDamage",0)
 				local str = char:getAttrib("str")
 				local damage = naturalDamage - (str * 5) - 100
-				char:setData("naturalDamage", damage)
+				char:setData("naturalDamage", math.max(0,damage))
 				ply:SetNWBool("MortalStrike", false)
 				if Entity:IsPlayer() then
 					local targetChar = Entity:getChar()
@@ -919,14 +906,14 @@ hook.Add("EntityTakeDamage", "skillMods", function(Entity, dmg)
 				local naturalDamage = char:getData("naturalDamage",0)
 				local str = char:getAttrib("str")
 				local damage = naturalDamage - (str * 5) - 100
-				char:setData("naturalDamage", damage)
+				char:setData("naturalDamage", math.max(0,damage))
 				ply:SetNWBool("ColiSmash", false)
 				if Entity:IsPlayer() then
 					local targetChar = Entity:getChar()
 					local armor = Entity:getData("naturalArmorRating")
 					targetChar:setData("naturalArmorRating", armor - 200)
 					timer.Simple(10, function()
-						targetChar:setData("naturalArmorRating", armor)
+						targetChar:setData("naturalArmorRating", math.max(0,armor))
 					end)
 				end
 				

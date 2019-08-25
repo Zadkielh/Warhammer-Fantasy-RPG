@@ -6,3 +6,9 @@ CAT.icony = 184
 
 CAT.uniqueID = CAT_SIGMAR
 CAT.order = 3
+CAT.class = {
+    "cultist_sigmar",
+    "statestroop",
+    "celestial_wizard",
+    "bright_wizard"
+}

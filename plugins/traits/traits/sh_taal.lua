@@ -7,32 +7,37 @@ TRAIT.SkillPointCost = 1
 TRAIT.Incompatible = {
 
 }
-
-TRAIT.RequiredTraits = {
-
+TRAIT.Incompatible = {
+    "tzeentch",
+    "khorne",
+    "undivided",
+    "taal",
+    "slaanesh",
+    "sigmar",
+    "nurgle",
+    "moor",
 }
-TRAIT.icon = "vgui/skills/ability_warrior_defensivestance_1.png"
+TRAIT.icon = "vgui/skills/ability_ambush.png"
 TRAIT.category = "Blessings of Taal"-- Common Passives, Warriors of Chaos, Lore of Light, Dark Magic
+TRAIT.faction = FACTION_EMPIRE
 
 TRAIT.desc = [[
-The Nature of Chaos alloys and metals grant them an unique ability to restore itself.
+Followers of Taal are adept in nature and have evolved to become faster and more durable. 
 
-Armorrating: +10
-Shield Regen: +5
+Speed: +50
+Health Regen: +5
 
 Level Requirement: ]] .. TRAIT.LevelReq .. [[
 
 Skill Point Cost:]] .. TRAIT.SkillPointCost .. [[
 
 ]]
-TRAIT.class = {
-    "chaos_warrior"
-}
 
 local function onAquire(TRAIT, char)
-    local naturalArmorRating = char:getData("naturalArmorRating", 0)
-    naturalArmorRating = naturalArmorRating + 10
-    char:setData("naturalArmorRating", naturalArmorRating)
+    local naturalSpeed = char:getData("naturalSpeed")
+    local naturalHPRegen = char:getData("naturalHPRegen")
+    char:setData("naturalSpeed", naturalSpeed + 50)
+    char:setData("naturalHPRegen", naturalHPRegen + 5)
 end
 
 TRAIT.onAquire = onAquire

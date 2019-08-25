@@ -75,18 +75,20 @@ hook.Add("EntityTakeDamage", "sharedXpOnNpcDamaged", function(Entity, dmg)
 	local attacker = dmg:GetAttacker()
 	local damage = dmg:GetDamage()
 	local entID = attacker:EntIndex()
+	if (entID) then
+		for k, v in pairs(NPC_XP) do
+			if attacker:GetClass() == v.class then
+				
+				if !(NPC_STATS[entID].Level) then
+					NPC_STATS[entID].Level = v.maxlevel/2
+				end
+				damage = damage + (damage / 100 * NPC_STATS[entID].Level * v.damagemulti)
+				dmg:SetDamage(damage)
 
-	for k, v in pairs(NPC_XP) do
-		if attacker:GetClass() == v.class then
-			
-			if !(NPC_STATS[entID].Level) then
-				NPC_STATS[entID].Level = v.maxlevel/2
 			end
-			damage = damage + (damage / 100 * NPC_STATS[entID].Level * v.damagemulti)
-			dmg:SetDamage(damage)
-
 		end
 	end
+	
     
 end)
 

@@ -41,7 +41,7 @@ function PANEL:Init()
 		local lastpanel
 		local x, y = 10, 60
 		local test = 1
-		for k, v in pairs(nut.skillCategories.list) do
+		for k, v in pairs(nut.traitCategories.list) do
 			local char = LocalPlayer():getChar()
 			if (char) then
 				if istable(v.class) then
@@ -65,10 +65,6 @@ function PANEL:Init()
 				
 			end
 	    end
-	    
-		for k, v in pairs(nut.traits.list) do
-			print("Traits:", k, v)
-		end
 
 		for k, v in pairs( nut.traits.list) do
 			if IsValid(self.panels[v.category]) then

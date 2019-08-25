@@ -168,7 +168,7 @@ function ENT:DeathEffects(data,phys)
 	local hits = 0
 	for k, v in pairs(Ents) do
 		if hits > 10 then break end
-		if ((v:IsPlayer() and v != self:GetOwner()) or v:IsNPC()) then
+		if ((v:IsPlayer() and v != self:GetOwner() and !(v:Team() == self:GetOwner():Team())) or v:IsNPC())  then
 			local effectdata = EffectData()
 			effectdata:SetOrigin( v:GetPos() + v:OBBCenter() )
 			effectdata:SetStart( data.HitPos )

@@ -130,6 +130,14 @@ local class = false
 		color = Color(10, 10, 10, 230)
 	end
 
+	if (trait.faction) then
+		if self:getFaction() != trait.faction then
+			color = Color(138, 1, 119, 230)
+		end
+	end
+
+	
+
 	return color 
 end
 
@@ -161,6 +169,13 @@ function charMeta:canAquireTrait(key)
 			if !(traits[v]) then
 				self:getPlayer():notify("You are missing a required trait.") return false
 			end
+		end
+	end
+
+	if (trait.faction) then
+		if self:getPlayer():Team() != trait.faction then
+			self:getPlayer():notify("Wrong faction.")
+			return false
 		end
 	end
 
@@ -240,23 +255,9 @@ if (SERVER)	then
 end
 
 function PLUGIN:PostPlayerLoadout(client)
-	
-	client:getChar():setData("bloodpool", 0)
-	client:getChar():setData("lifeSteal", 0)
-
 	if !(istable(client:getChar():getTraits())) then
 		self:setData("Traits", {})
 	end
-
-	for k, v in pairs(client:getChar():getTraits()) do
-		local trait = nut.traits.list[k]
-		if (trait.onAquire) then
-			timer.Simple(0.05, function()
-				trait.onAquire(trait, client:getChar())
-			end)
-		end
-	end
-
 end
 
 
@@ -271,10 +272,12 @@ hook.Add("EntityTakeDamage", "traitModifiers", function(Entity, dmg)
 		local lifeSteal = char:getData("lifeSteal", 0)
 		local heal = (dmg:GetDamage()*(lifeSteal / 100) ) 
 		ply:SetHealth(math.Clamp(heal + ply:Health(), ply:Health(), ply:GetMaxHealth()))
-		local bloodPool = char:getData("bloodpool", 0)
-		local current = ply:getLocalVar("mana", 0)
-		local blood = math.Clamp(current + (heal *0.5), 0, bloodPool)
-		ply:setLocalVar("mana", blood)
+		if (char:hasTrait("blood_drinker")) then
+			local bloodPool = char:getData("bloodpool", 0)
+			local current = ply:getLocalVar("mana", 0)
+			local blood = math.Clamp(current + (heal *0.5), 0, bloodPool)
+			ply:setLocalVar("mana", blood)
+		end
     end
 end)
 

@@ -38,7 +38,7 @@ function ENT:CustomOnThink()
 		for k, v in pairs(entities) do
 			if v:IsNPC() or v:IsPlayer() then
 				if v == self then return end
-				if v:Health() > 20000 then return end
+				if v:Health() > 5000 then return end
 				local d = DamageInfo()
 				d:SetDamage( v:Health() * 2 )
 				d:SetAttacker( self )

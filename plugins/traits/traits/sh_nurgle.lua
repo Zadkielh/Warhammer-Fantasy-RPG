@@ -17,12 +17,12 @@ TRAIT.RequiredTraits = {
 }
 TRAIT.icon = "vgui/skills/ability_warrior_defensivestance_1.png"
 TRAIT.category = "Blessings of Nurgle"-- Common Passives, Warriors of Chaos, Lore of Light, Dark Magic
+TRAIT.faction = FACTION_CHAOS
 
 TRAIT.desc = [[
-This trait is the entry trait for the khorne tree. This one locks out all the other gods aswell as the undivided advanced traits.
+This trait is the entry trait for the Nurgle tree. This one locks out all the other gods aswell as the undivided advanced traits.
 
-Health Regen: +10
-Damage: +50
+Health: + 500
 
 Level Requirement: ]] .. TRAIT.LevelReq .. [[
 
@@ -31,16 +31,13 @@ Skill Point Cost:]] .. TRAIT.SkillPointCost .. [[
 ]]
 TRAIT.class = {
     "chaos_warrior",
-    "sh_reaver"
+    "sh_reaver",
+    "asp_sorcerer"
 }
 
 local function onAquire(TRAIT, char)
-    local naturalHPRegen = char:getData("naturalHPRegen", 0)
-    local naturalDamage = self:getData("naturalDamage", 0)
-    naturalHPRegen = naturalHPRegen + 10
-    naturalDamage = naturalDamage + 50
-    char:setData("naturalHPRegen", naturalHPRegen)
-    char:setData("naturalDamage", naturalDamage)
+    local HPMax = char:getData("naturalHPMax", 0)
+    char:setData("naturalHPMax", HPMax + 500)
 end
 
 TRAIT.onAquire = onAquire

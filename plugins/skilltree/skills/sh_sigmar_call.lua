@@ -56,7 +56,7 @@ local function ability( SKILL, ply )
 
 	local Entities = ents.FindInSphere( ply:GetPos(), 250 )
 	for k, v in pairs(Entities) do
-		if v:IsPlayer() or (v:IsPlayer() and v:IsBot()) then
+		if v:IsPlayer() or (v:IsPlayer() and v:IsBot()) and v:Team() == ply:Team()  then
 			local RunSpeed = v:GetRunSpeed()
 			local WalkSpeed = v:GetWalkSpeed()
 			v:SetRunSpeed(RunSpeed + char:getAttrib("fth", 0) + 50)
@@ -67,8 +67,8 @@ local function ability( SKILL, ply )
 			end)
 
 			timer.Simple(10, function()
-				v:SetRunSpeed(v:SetNWFloat("runSpeed") or 235 )
-	        	v:SetWalkSpeed(v:GetNWFloat("walkSpeed") or 130 )
+				v:SetRunSpeed(235 + v:getChar():getData("naturalSpeed"))
+	        	v:SetWalkSpeed(130 + v:getChar():getData("naturalSpeed"))
 			end)
 
 		end

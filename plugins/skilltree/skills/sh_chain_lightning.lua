@@ -75,7 +75,7 @@ local function ability(SKILL, ply )
 			local hits = 0
 			for k, v in pairs(Ents) do
 				if hits > 10 then break end
-				if ((v:IsPlayer() and v != ply) or v:IsNPC()) then
+				if ((v:IsPlayer() and v != ply and !(v:Team() == ply:Team())) or v:IsNPC())  then
 					local effectdata = EffectData()
 					effectdata:SetOrigin( v:GetPos() + v:OBBCenter() )
 					effectdata:SetStart( pos )

@@ -61,10 +61,11 @@ local function ability( SKILL, ply )
 			end)
 
 			timer.Simple(10, function()
-
-				if (ply:GetNWBool("WarriorCleave")) then
-					char:setData("naturalDamage", naturalDamage)
-					ply:SetNWBool("WarriorCleave", false)
+				if SERVER then
+					if (ply:GetNWBool("WarriorCleave")) then
+						char:setData("naturalDamage", math.max(0,naturalDamage))
+						ply:SetNWBool("WarriorCleave", false)
+					end
 				end
 			end)
 		end

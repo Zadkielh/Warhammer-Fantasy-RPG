@@ -9,7 +9,7 @@ TRAIT.Incompatible = {
 }
 
 TRAIT.RequiredTraits = {
-
+    "undivided"
 }
 TRAIT.icon = "vgui/skills/ability_warrior_defensivestance_1.png"
 TRAIT.category = "Blessings of Chaos Undivided"-- Common Passives, Warriors of Chaos, Lore of Light, Dark Magic
@@ -26,7 +26,9 @@ Skill Point Cost:]] .. TRAIT.SkillPointCost .. [[
 
 ]]
 TRAIT.class = {
-    "chaos_warrior"
+    "chaos_warrior",
+    "reaver",
+    "asp_sorcerer"
 }
 
 local function onAquire(TRAIT, char)

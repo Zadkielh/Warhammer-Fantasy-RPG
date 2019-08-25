@@ -56,7 +56,7 @@ local function ability( SKILL, ply )
 
 	local Entities = ents.FindInSphere( ply:GetPos(), 250 )
 	for k, v in pairs(Entities) do
-		if v:IsPlayer() or (v:IsPlayer() and v:IsBot()) then
+		if v:IsPlayer() or (v:IsPlayer() and v:IsBot()) and v:Team() == ply:Team() then
 			local regenHealth = (char:getAttrib("fth", 0) /2) + 20
 			local maxHealth = v:GetMaxHealth()
 			

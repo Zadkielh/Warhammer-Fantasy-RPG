@@ -24,6 +24,9 @@ ITEM.traits = {
 		str = 0
 	}
 }
+ITEM.playerClass = {
+
+}
 /*ITEM.properties = [[None]]*/
 -- Inventory drawing
 if (CLIENT) then
@@ -113,6 +116,21 @@ ITEM.functions.Equip = {
 				return  false
 				
 			end
+		end
+		local bool = false 
+
+		for k, v in pairs(item.playerClass) do
+			local class = char:getClass()
+			if v == class then
+				bool = true
+			else
+				bool = false
+			end
+		end
+
+		if !(bool) then
+			item.player:notifyLocalized("Wrong class.") 
+			return false
 		end
 
 		

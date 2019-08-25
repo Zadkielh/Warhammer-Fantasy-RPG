@@ -61,7 +61,8 @@ do
         local items = self:getInv():getItems()
         
         local factionHealth = nut.faction.indices[self:getFaction()].health
-        local constitutionHealth = factionHealth + (self:getAttrib("con", 0) * 20)
+        local constitutionHealth = factionHealth + (self:getAttrib("con", 0) * 100)
+        local levelHealth = (100 * self:getLevel()) + (8 * self:getLevel() * self:getLevel())
         local classHealth = 0
 
         if (self:getClass()) then
@@ -70,7 +71,7 @@ do
 
         
 
-        local hp = constitutionHealth + classHealth
+        local hp = constitutionHealth + classHealth + levelHealth
 
         local naturalMaxHP = self:getData("naturalHPMax", 0)
         hp = hp + naturalMaxHP
@@ -80,6 +81,7 @@ do
                 hp = hp + v.traits.hp
             end
         end
+
         return hp, constitutionHealth, factionHealth, classHealth
     end
 
@@ -88,7 +90,8 @@ do
         
         local damage = 0
         local naturalDamage = self:getData("naturalDamage", 0)
-        damage = damage + naturalDamage
+        local str = self:getAttrib("str") / 100
+        damage = (damage + naturalDamage) * (1 + str)
         /*
         for k, v in pairs(items) do 
             if v:getData("equip") then
@@ -150,6 +153,23 @@ do
         return hpregen
     end
 
+    function charMeta:getSpeed()
+        local items = self:getInv():getItems()
+        
+        local speed = 0
+
+        local naturalSpeed = self:getData("naturalSpeed", 0)
+        speed = speed + naturalSpeed
+        
+        for k, v in pairs(items) do
+            if v:getData("equip") then
+                speed = speed + v.traits.speed
+            end
+        end
+
+        return speed
+    end
+
     local plyMeta = FindMetaTable( "Player" )
 
     function plyMeta:HealthRegeneration(valueHealth, valueArmor) 
@@ -161,31 +181,22 @@ do
             local valueHealth = valueHealth or 0
             local valueArmor = valueArmor or 0
 
-            local hpregen = 0 
-            local shieldregen = 0
-            local shield = 0
+            local hpregen = char:getHealthRegen() 
+            local shieldregen = char:getShieldRegen()
+            local shield = char:getMaxShield()
             local MaxHp = char:getMaxHealth()
-            local walkSpeed = self:GetNWFloat("walkSpeed") or 130
-            local runSpeed = self:GetNWFloat("runSpeed") or 235
+            local speed = char:getSpeed()
+            local walkSpeed = 130
+            local runSpeed = 235
 
             self:SetMaxHealth(MaxHp)
-
-            for k, v in pairs(items) do
-                if v:getData("equip") then
-                    hpregen = hpregen + v.traits.hpregen
-                    shieldregen = shieldregen + v.traits.shieldregen
-                    shield = shield + v.traits.shield
-                    if (v.traits.speed) then
-                        self:SetWalkSpeed(walkSpeed + v.traits.speed)
-                        self:SetRunSpeed(runSpeed + v.traits.speed)
-                    end
-                end
-            end
-
-            
+            self:SetWalkSpeed(walkSpeed + speed)
+            self:SetRunSpeed(runSpeed + speed)
 
             local hp = (5 + hpregen + valueHealth) * (0.20)
             local shieldreg = (5 + shieldregen + valueArmor) * (0.20)
+
+            
 
             if timer.Exists(uniqueID) then
                 timer.Remove(uniqueID)
@@ -247,15 +258,22 @@ end)
 hook.Add("PostPlayerLoadout", "EquipmentModifiers", function(client)
 
     timer.Simple(0.1, function()
+    
     local char = client:getChar()
     local items = char:getInv():getItems()
 
+    client:SetNWFloat("runSpeed", 235)
+	client:SetNWFloat("walkSpeed", 130)
+
+    client:getChar():setData("naturalSpeed", 0)
     client:getChar():setData("naturalArmorRating", 0)
 	client:getChar():setData("naturalDamage", 0)
     client:getChar():setData("naturalHPMax", 0)
 	client:getChar():setData("naturalShield", 0)
     client:getChar():setData("naturalShieldRegen", 0)
 	client:getChar():setData("naturalHPRegen", 0)
+    client:getChar():setData("bloodpool", 0)
+	client:getChar():setData("lifeSteal", 0)
 
     local hp = 0
     local shield = 0
@@ -266,11 +284,27 @@ hook.Add("PostPlayerLoadout", "EquipmentModifiers", function(client)
             end
         end
 
-    local _, MaxHp, k, classHealth = char:getMaxHealth()
+    for k, v in pairs(client:getChar():getTraits()) do
+		local trait = nut.traits.list[k]
+		if (trait.onAquire) then
+			trait.onAquire(trait, client:getChar())
+		end
+	end
 
-    client:SetHealth( client:Health() + hp + classHealth)
-    client:SetMaxHealth(MaxHp)
+    for k, v in pairs(client:getChar():getSkills()) do
+		local skill = nut.skills.list[k]
+		if (skill.onAquire) then
+			skill.onAquire(skill, client:getChar())
+		end
+	end
+
+    local MaxHP, ConHealth, FactionHealth, classHealth = char:getMaxHealth()
+    client:SetHealth( MaxHP )
+    client:SetMaxHealth(MaxHP)
     client:SetArmor(shield)
+
+
+    
     client:HealthRegeneration()
     end)
 end

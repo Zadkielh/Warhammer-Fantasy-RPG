@@ -65,8 +65,10 @@ local function ability( SKILL, ply )
 			timer.Simple(10, function()
 
 				if (ply:GetNWBool("ColiSmash")) then
-					char:setData("naturalDamage", naturalDamage)
-					ply:SetNWBool("ColiSmash", false)
+					if SERVER then
+						char:setData("naturalDamage", math.max(0,naturalDamage))
+						ply:SetNWBool("ColiSmash", false)
+					end
 				end
 			end)
 		end

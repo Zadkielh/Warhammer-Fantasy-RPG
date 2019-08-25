@@ -64,9 +64,11 @@ local function ability( SKILL, ply )
 
 			timer.Simple(10, function()
 
-				if (ply:GetNWBool("MortalStrike")) then
-					char:setData("naturalDamage", naturalDamage)
-					ply:SetNWBool("MortalStrike", false)
+				if ( ply:GetNWBool("MortalStrike") ) then
+					if SERVER then
+						char:setData("naturalDamage", math.max(0,naturalDamage))
+						ply:SetNWBool("MortalStrike", false)
+					end
 				end
 			end)
 		end

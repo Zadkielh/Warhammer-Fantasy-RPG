@@ -16,6 +16,7 @@ TRAIT.RequiredTraits = {
 }
 TRAIT.icon = "vgui/skills/ability_warrior_defensivestance_1.png"
 TRAIT.category = "Blessings of Khorne"-- Common Passives, Warriors of Chaos, Lore of Light, Dark Magic
+TRAIT.faction = FACTION_CHAOS
 
 TRAIT.desc = [[
 This trait is the entry trait for the khorne tree. This one locks out all the other gods aswell as the undivided advanced traits.

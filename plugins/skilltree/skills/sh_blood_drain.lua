@@ -57,8 +57,8 @@ local function ability( SKILL, ply )
     local Entities = ents.FindInSphere( ply:GetPos(), 500 )
 
     for k, v in pairs(Entities) do
-		if ((v:IsNPC() and v:Disposition( ply ) == D_HT) or v:IsPlayer()) then
-			if !(v == ply) then 
+		if ((v:IsNPC() and v:Disposition( ply ) == D_HT) or v:IsPlayer() and !(v:Team() == ply:Team())) then
+			if !(v == ply)  then 
 				timer.Create("bloodDrain"..v:EntIndex(), 0.25, 10, function()
 					if IsValid(v) then
 						v:TakeDamage(10 + (targetChar:getAttrib("str") + (targetChar:getAttrib("fth") *2)) , ply, ply)

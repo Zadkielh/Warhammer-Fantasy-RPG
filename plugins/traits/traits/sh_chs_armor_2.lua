@@ -9,7 +9,7 @@ TRAIT.Incompatible = {
 }
 
 TRAIT.RequiredTraits = {
-    "naturalarmor_1"
+    "chs_armor_1"
 }
 TRAIT.icon = "vgui/skills/ability_warrior_defensivestance_2.png"
 TRAIT.category = "Blessings of Chaos Undivided"-- Common Passives, Warriors of Chaos, Lore of Light, Dark Magic

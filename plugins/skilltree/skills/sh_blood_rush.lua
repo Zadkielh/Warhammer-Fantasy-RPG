@@ -91,8 +91,8 @@ local function ability( SKILL, ply )
             targetChar:setData("lifeSteal", lifeSteal)
             targetChar:setData("naturalArmorRating", naturalArmorRating)
 
-            ply:SetRunSpeed(ply:SetNWFloat("runSpeed") or 235 )
-	        ply:SetWalkSpeed(ply:GetNWFloat("walkSpeed") or 130 )
+            ply:SetRunSpeed(235 + targetChar:getData("naturalSpeed") )
+	        ply:SetWalkSpeed(130 + targetChar:getData("naturalSpeed") )
 
             ply:SetHealth(ply:Health() - health)
             ply:SetMaxHealth(MaxHealth)

@@ -60,10 +60,10 @@ local function ability( SKILL, ply )
 			timer.Simple(10, function()
 
 				if (ply:GetNWBool("RavCarni")) then
-					print("Carni.Remove1")
-					local lifeSteal = ply:getChar():getData("lifeSteal", 0)
-					ply:getChar():setData("lifeSteal", math.max(lifeSteal -50))
-					ply:SetNWBool("RavCarni", false)
+					if SERVER then
+						ply:getChar():setData("lifeSteal", math.max(0,lifeSteal))
+						ply:SetNWBool("RavCarni", false)
+					end
 				end
 			end)
 		end
