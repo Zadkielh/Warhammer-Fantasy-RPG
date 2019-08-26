@@ -71,9 +71,9 @@ local function ability( SKILL, ply )
     ply:SetRunSpeed(RunSpeed + (bloodPool * 0.5) )
 	ply:SetWalkSpeed(WalkSpeed + (bloodPool * 0.5) )
                 
-    targetChar:setData("naturalDamage", damage)
-    targetChar:setData("lifeSteal", lifeSteal+50)
-    targetChar:setData("naturalArmorRating", armorrating)
+    targetChar:setData("tempDamage", damage)
+    targetChar:setData("templifeSteal", lifeSteal+50)
+    targetChar:setData("tempArmorRating", armorrating)
 
     ply:SetHealth(ply:Health() + health)
     ply:SetMaxHealth(ply:GetMaxHealth() + health)
@@ -87,9 +87,9 @@ local function ability( SKILL, ply )
     timer.Create("valiant_resolve"..(ply:SteamID()), 10, 1, function()
         if (targetChar) then
             
-            targetChar:setData("naturalDamage", naturalDamage)
-            targetChar:setData("lifeSteal", lifeSteal)
-            targetChar:setData("naturalArmorRating", naturalArmorRating)
+            targetChar:setData("tempDamage", naturalDamage)
+            targetChar:setData("templifeSteal", lifeSteal)
+            targetChar:setData("tempArmorRating", naturalArmorRating)
 
             ply:SetRunSpeed(235 + targetChar:getData("naturalSpeed") )
 	        ply:SetWalkSpeed(130 + targetChar:getData("naturalSpeed") )

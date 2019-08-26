@@ -61,7 +61,7 @@ local function ability( SKILL, ply )
 			local maxHealth = v:GetMaxHealth()
 			
 			local naturalMaxHP = char:getData("naturalHPMax", 0)
-			char:setData("naturalHPMax", naturalMaxHP + (maxHealth * 0.2))
+			char:setData("tempHPMax", naturalMaxHP + (maxHealth * 0.2))
 			v:SetHealth(v:Health() + (v:Health() * 0.2))
 			v:HealthRegeneration(regenHealth)
 			
@@ -72,7 +72,7 @@ local function ability( SKILL, ply )
 			end)
 
 			timer.Simple(10, function()
-				char:setData("naturalHPMax", naturalMaxHP)
+				char:setData("tempHPMax", naturalMaxHP)
 				v:SetHealth(maxHealth)
 				v:HealthRegeneration(0)
 			end)

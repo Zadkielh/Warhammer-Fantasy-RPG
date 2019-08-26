@@ -51,9 +51,9 @@ local function ability( SKILL, ply )
 			local char = ply:getChar()
 			local naturalDamage = char:getData("naturalDamage",0)
 			local faith = char:getAttrib("fth")
-			local damage = naturalDamage + (faith * 2) + 100
+			local damage = naturalDamage + (faith * 2) + 100 + ((25 * (char:getLevel()*char:getLevel()) / (char:getLevel()+char:getLevel())))
 					
-			char:setData("naturalDamage", damage)
+			char:setData("tempDamage", damage)
 
 			timer.Simple(0, function()
 				ParticleEffectAttach("fantasy_sigmar_enhance_core", PATTACH_POINT_FOLLOW, ply, 5)
@@ -63,7 +63,7 @@ local function ability( SKILL, ply )
 
 				if (ply:GetNWBool("SigmarHammer")) then
 					if SERVER then
-						char:setData("naturalDamage", math.max(0,naturalDamage))
+						char:setData("tempDamage", math.max(0,naturalDamage))
 						ply:SetNWBool("SigmarHammer", false)
 					end
 				end

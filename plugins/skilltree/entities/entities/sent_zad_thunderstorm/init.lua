@@ -34,13 +34,15 @@ function ENT:CustomOnInitialize()
 end
 
 function ENT:CustomOnThink()
+	local char = self:GetOwner():getChar()
+	if !(self:GetOwner():IsPlayer()) then return end
 	local entities = ents.FindInSphere( self:GetPos(), 150 )
 	if (self.Active) then
 		for k, v in pairs(entities) do
 			if v:IsNPC() or v:IsPlayer() then
 				if v == self then return end
 				local d = DamageInfo()
-				d:SetDamage( 100 )
+				d:SetDamage( 100 + (char:getAttrib("mgc") * 2) + ((25 * (char:getLevel()*char:getLevel()) / (char:getLevel()+char:getLevel()))))
 				d:SetAttacker( self.Owner )
 				d:SetDamageType( DMG_DISSOLVE )
 

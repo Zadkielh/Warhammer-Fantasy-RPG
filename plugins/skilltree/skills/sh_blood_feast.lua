@@ -48,7 +48,7 @@ local function ability( SKILL, ply )
 
 		if !(ply:GetNWBool("RavCarni" )) then
 			local lifeSteal = ply:getChar():getData("lifeSteal", 0)
-			ply:getChar():setData("lifeSteal", lifeSteal + 50)
+			ply:getChar():setData("templifeSteal", lifeSteal + 50)
 		
 			local bone = ply:LookupBone( "ValveBiped.Bip01_R_Hand" )
 			local bonePos = ply:GetBonePosition(bone)
@@ -61,7 +61,7 @@ local function ability( SKILL, ply )
 
 				if (ply:GetNWBool("RavCarni")) then
 					if SERVER then
-						ply:getChar():setData("lifeSteal", math.max(0,lifeSteal))
+						ply:getChar():setData("templifeSteal", math.max(0,lifeSteal))
 						ply:SetNWBool("RavCarni", false)
 					end
 				end

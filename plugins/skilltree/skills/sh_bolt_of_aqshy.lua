@@ -28,7 +28,7 @@ Skill Point Cost:]] .. SKILL.SkillPointCost .. [[
     
 ]]
 
-SKILL.coolDown = 10
+SKILL.coolDown = 5
 
 local function ability(SKILL, ply )
    local nospam = ply:GetNWBool( "nospamRanged" )

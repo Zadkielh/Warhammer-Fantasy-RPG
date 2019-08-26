@@ -33,19 +33,25 @@ function ENT:CustomOnInitialize()
 	)
 	self:SetMoveType(MOVETYPE_VPHYSICS)
 	--self:SetPos(self:GetUp()*50)
+	if (self:GetOwner():IsPlayer()) then
+		local char = self:GetOwner():getChar()
+
+		self.DirectDamage = 50 + (char:getAttrib("mgc") * 2) + ((25 * (char:getLevel()*char:getLevel()) / (char:getLevel()+char:getLevel())))
+	end
 end
 
 function ENT:CustomOnThink()
 	ParticleEffectAttach("fantasy_wind_blade", PATTACH_POINT_FOLLOW, self, 1)
 	self.HasParticle = true
-
+	local char = self:GetOwner():getChar()
+	if !(self:GetOwner():IsPlayer()) then return end
 	local entities = ents.FindInSphere( self:GetPos(), 150 )
 	if (self.Active) then
 		for k, v in pairs(entities) do
 			if v:IsNPC() or v:IsPlayer() then
 				if v == self then return end
 				local d = DamageInfo()
-				d:SetDamage( 100 )
+				d:SetDamage( 100 + (char:getAttrib("mgc") * 2) + ((25 * (char:getLevel()*char:getLevel()) / (char:getLevel()+char:getLevel()))))
 				d:SetAttacker( self )
 				d:SetDamageType( DMG_SLASH )
 

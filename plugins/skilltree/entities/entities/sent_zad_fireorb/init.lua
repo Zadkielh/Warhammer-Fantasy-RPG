@@ -17,7 +17,10 @@ function ENT:CustomOnInitialize()
 	//util.SpriteTrail(self, 0, Color(90,90,90,255), false, 10, 1, 3, 1/(15+1)*0.5, "trails/smoke.vmt")
 	//ParticleEffectAttach("rocket_smoke", PATTACH_ABSORIGIN_FOLLOW, self, 0)
 	ParticleEffectAttach("fantasy_fireball_small", PATTACH_ABSORIGIN_FOLLOW, self, 0)
-
+	local char = self:GetOwner():getChar()
+	if !(self:GetOwner():IsPlayer()) then return end
+	self.DirectDamage = 50 + (char:getAttrib("mgc") * 2) + ((25 * (char:getLevel()*char:getLevel()) / (char:getLevel()+char:getLevel())))
+	
 	self.velocity = 10
 	
 	self.HasParticle = false

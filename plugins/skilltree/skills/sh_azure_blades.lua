@@ -54,7 +54,7 @@ local function ability(SKILL, ply )
 			if v:IsNPC() or (v:IsPlayer() and v != ply) then
 				local dmg = DamageInfo()
 				dmg:SetDamageType(DMG_SLASH)
-				dmg:SetDamage(10)
+				dmg:SetDamage(10 + (char:getAttrib("mgc") * 1) + ((25 * (char:getLevel()*char:getLevel()) / (char:getLevel()+char:getLevel()))))
 				dmg:SetAttacker(ply)
 				v:TakeDamageInfo(dmg)
 			end

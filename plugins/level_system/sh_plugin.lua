@@ -336,13 +336,22 @@ function PLUGIN:GetLevelText(character)
 end
 
 function PLUGIN:DrawCharInfo(client, character, info)
+	/*
+
 	local levelText, levelColor = self:GetLevelText(character)
 	local char = nut.char.loaded[character:getID()]
 	if (char) then
     	if (levelText) then
     		info[#info + 1] = {levelText..char.level, levelColor}
     	end
-    end
+    end*/
+
+end
+
+function PLUGIN:DrawEntityInfo(entity, alpha, position)
+	if (entity.IsPlayer(entity)) then
+		return false
+	end
 end
 
 hook.Add("CharacterLoaded", "CharLoad.GetLevels", function(id)

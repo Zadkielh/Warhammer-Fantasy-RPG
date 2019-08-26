@@ -13,7 +13,7 @@ SKILL.category = "Lore of Fire"-- Common Passives, Warrior, Lore of Light, Lore 
 
 SKILL.slot = "RANGED" -- ULT, RANGED, MELEE, AOE, PASSIVE
 SKILL.class = {
-    "bright_wizard"
+    --"bright_wizard"
 }
 
 SKILL.desc = [[

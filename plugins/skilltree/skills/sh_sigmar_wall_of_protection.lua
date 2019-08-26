@@ -124,7 +124,7 @@ local function ability(SKILL, ply )
 		for k, v in pairs(Ents) do
 			if v:IsNPC() or v:IsPlayer() then
 				local damageTable = DamageInfo()
-				damageTable:SetDamage( 75 + ply:getChar():getAttrib("fth") )
+				damageTable:SetDamage( 75 + ply:getChar():getAttrib("fth") + ((25 * (char:getLevel()*char:getLevel()) / (char:getLevel()+char:getLevel()))) )
 				damageTable:SetAttacker( ply )
 				damageTable:SetDamageType( DMG_DISSOLVE )
 				v:TakeDamageInfo(damageTable)

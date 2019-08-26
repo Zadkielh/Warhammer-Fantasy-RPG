@@ -119,19 +119,22 @@ ITEM.functions.Equip = {
 		end
 		local bool = false 
 
-		for k, v in pairs(item.playerClass) do
-			local class = char:getClass()
-			if v == class then
-				bool = true
-			else
-				bool = false
+		if (type(item.playerClass)) == "table" and #item.playerClass > 0 then
+			for k, v in pairs(item.playerClass) do
+				local class = char:getClass()
+				if v == class then
+					bool = true
+				else
+					bool = false
+				end
+			end
+			if !(bool) then
+				item.player:notifyLocalized("Wrong class.") 
+				return false
 			end
 		end
 
-		if !(bool) then
-			item.player:notifyLocalized("Wrong class.") 
-			return false
-		end
+		
 
 		
 		client.carryWeapons = client.carryWeapons or {}

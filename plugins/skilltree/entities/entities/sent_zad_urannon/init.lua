@@ -28,6 +28,10 @@ function ENT:CustomOnInitialize()
 	
 	self.HasParticle = false
 
+	local char = self:GetOwner():getChar()
+	if !(self:GetOwner():IsPlayer()) then return end
+	self.RadiusDamage = 500 + (char:getAttrib("mgc") * 2) + ((25 * (char:getLevel()*char:getLevel()) / (char:getLevel()+char:getLevel())))
+
 	self:SetMaterial("Models/effects/vol_light001")
 
 	self.velocity = 10

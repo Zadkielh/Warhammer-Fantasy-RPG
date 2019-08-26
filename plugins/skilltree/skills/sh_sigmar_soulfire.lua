@@ -62,7 +62,7 @@ local function ability(SKILL, ply )
 			timer.Simple(0, function()
 				if IsValid(ply) and IsValid(AbilityPos.Entity) then
 					timer.Simple(1.8, function()
-						AbilityPos.Entity:TakeDamage(50 + (ply:getChar():getAttrib("fth") * 5), ply, ply)
+						AbilityPos.Entity:TakeDamage(50 + (ply:getChar():getAttrib("fth") * 5) + ((25 * (char:getLevel()*char:getLevel()) / (char:getLevel()+char:getLevel()))), ply, ply)
 						sound.Play("fx/spl/spl_mysticism_hit.wav", AbilityPos.HitPos, 80, 100)
 					end)
 

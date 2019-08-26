@@ -56,8 +56,8 @@ local function ability(SKILL, ply )
 
 			timer.Create("SoulStealer"..ply:SteamID(), 0.25, 20, function()
 				if IsValid(ply) and IsValid(AbilityPos.Entity) then
-					ply:SetHealth(ply:Health() + 5)
-					AbilityPos.Entity:TakeDamage(5, ply, ply)
+					ply:SetHealth(ply:Health() + 5 + (char:getAttrib("mgc") * 1) + ((25 * (char:getLevel()*char:getLevel()) / (char:getLevel()+char:getLevel()))))
+					AbilityPos.Entity:TakeDamage(5 + (char:getAttrib("mgc") * 1) + ((25 * (char:getLevel()*char:getLevel()) / (char:getLevel()+char:getLevel()))), ply, ply)
 				end 
 			end)
 		end

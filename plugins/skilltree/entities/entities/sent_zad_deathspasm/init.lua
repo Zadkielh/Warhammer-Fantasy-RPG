@@ -17,6 +17,10 @@ function ENT:CustomOnInitialize()
 	//util.SpriteTrail(self, 0, Color(90,90,90,255), false, 10, 1, 3, 1/(15+1)*0.5, "trails/smoke.vmt")
 	//ParticleEffectAttach("rocket_smoke", PATTACH_ABSORIGIN_FOLLOW, self, 0)
 	ParticleEffectAttach("death_spasm", PATTACH_ABSORIGIN_FOLLOW, self, 0)
+
+	local char = self:GetOwner():getChar()
+	if !(self:GetOwner():IsPlayer()) then return end
+	self.DirectDamage = 100 + (char:getAttrib("mgc") * 2) + ((25 * (char:getLevel()*char:getLevel()) / (char:getLevel()+char:getLevel())))
 	
 	self.HasParticle = false
 
@@ -164,6 +168,9 @@ function ENT:DeathEffects(data,phys)
 	self.ExplosionLight1:Fire("TurnOn", "", 0)
 	self:DeleteOnRemove(self.ExplosionLight1)
 
+	local char = self:GetOwner():getChar()
+	if !(self:GetOwner():IsPlayer()) then return end
+
 	local Ents = ents.FindInSphere(self:GetPos(), 500)
 	local hits = 0
 	for k, v in pairs(Ents) do
@@ -174,7 +181,7 @@ function ENT:DeathEffects(data,phys)
 			effectdata:SetStart( data.HitPos )
 			util.Effect( "effect_zad_dark_lightning", effectdata )
 
-			v:TakeDamage(50, self:GetOwner(), self:GetOwner())
+			v:TakeDamage(50 + (char:getAttrib("mgc") * 2) + ((25 * (char:getLevel()*char:getLevel()) / (char:getLevel()+char:getLevel()))), self:GetOwner(), self:GetOwner())
 			v:Ignite(5)
 
 			hits = hits + 1

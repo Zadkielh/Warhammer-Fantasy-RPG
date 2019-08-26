@@ -13,16 +13,16 @@ ENT.SingleSpawner = false -- If set to true, it will spawn the entities once the
 ENT.Model = {"models/Gibs/HGIBS.mdl"} -- The models it should spawn with | Picks a random one from the table
 ENT.EntitiesToSpawn = {
 
-	{EntityName = "NPC1",SpawnPosition = {vForward=math.Rand(1000, -1000),vRight=math.Rand(-1000, 1000),vUp=10},Entities = {"npc_zad_vmp_skeleton_warrior_sws"}},
-	{EntityName = "NPC2",SpawnPosition = {vForward=math.Rand(1000, -1000),vRight=math.Rand(-1000, 1000),vUp=10},Entities = {"npc_zad_vmp_skeleton_warrior_sws"}},
-	{EntityName = "NPC3",SpawnPosition = {vForward=math.Rand(1000, -1000),vRight=math.Rand(-1000, 1000),vUp=10},Entities = {"npc_zad_vmp_skeleton_warrior_sws"}},
-	{EntityName = "NPC4",SpawnPosition = {vForward=math.Rand(1000, -1000),vRight=math.Rand(-1000, 1000),vUp=10},Entities = {"npc_zad_vmp_skeleton_warrior_sws"}},
-	{EntityName = "NPC5",SpawnPosition = {vForward=math.Rand(1000, -1000),vRight=math.Rand(-1000, 1000),vUp=10},Entities = {"npc_zad_vmp_skeleton_warrior_sws"}},
-	{EntityName = "NPC6",SpawnPosition = {vForward=math.Rand(1000, -1000),vRight=math.Rand(-1000, 1000),vUp=10},Entities = {"npc_zad_vmp_skeleton_warrior_sp"}},
-	{EntityName = "NPC7",SpawnPosition = {vForward=math.Rand(1000, -1000),vRight=math.Rand(-1000, 1000),vUp=10},Entities = {"npc_zad_vmp_skeleton_warrior_sp"}},
-	{EntityName = "NPC8",SpawnPosition = {vForward=math.Rand(1000, -1000),vRight=math.Rand(-1000, 1000),vUp=10},Entities = {"npc_zad_vmp_skeleton_warrior_sp"}},
-	{EntityName = "NPC9",SpawnPosition = {vForward=math.Rand(1000, -1000),vRight=math.Rand(-1000, 1000),vUp=10},Entities = {"npc_zad_vmp_skeleton_warrior_sp"}},
-	{EntityName = "NPC10",SpawnPosition = {vForward=math.Rand(1000, -1000),vRight=math.Rand(-1000, 1000),vUp=10},Entities = {"npc_zad_vmp_skeleton_warrior_sp"}},
+	{EntityName = "NPC1",SpawnPosition = {vForward=math.Rand(1000, -1000),vRight=math.Rand(-1000, 1000),vUp=50},Entities = {"npc_zad_vmp_skeleton_warrior_sws"}},
+	{EntityName = "NPC2",SpawnPosition = {vForward=math.Rand(1000, -1000),vRight=math.Rand(-1000, 1000),vUp=50},Entities = {"npc_zad_vmp_skeleton_warrior_sws"}},
+	{EntityName = "NPC3",SpawnPosition = {vForward=math.Rand(1000, -1000),vRight=math.Rand(-1000, 1000),vUp=50},Entities = {"npc_zad_vmp_skeleton_warrior_sws"}},
+	{EntityName = "NPC4",SpawnPosition = {vForward=math.Rand(1000, -1000),vRight=math.Rand(-1000, 1000),vUp=50},Entities = {"npc_zad_vmp_skeleton_warrior_sws"}},
+	{EntityName = "NPC5",SpawnPosition = {vForward=math.Rand(1000, -1000),vRight=math.Rand(-1000, 1000),vUp=50},Entities = {"npc_zad_vmp_skeleton_warrior_sws"}},
+	{EntityName = "NPC6",SpawnPosition = {vForward=math.Rand(1000, -1000),vRight=math.Rand(-1000, 1000),vUp=50},Entities = {"npc_zad_vmp_skeleton_warrior_sp"}},
+	{EntityName = "NPC7",SpawnPosition = {vForward=math.Rand(1000, -1000),vRight=math.Rand(-1000, 1000),vUp=50},Entities = {"npc_zad_vmp_skeleton_warrior_sp"}},
+	{EntityName = "NPC8",SpawnPosition = {vForward=math.Rand(1000, -1000),vRight=math.Rand(-1000, 1000),vUp=50},Entities = {"npc_zad_vmp_skeleton_warrior_sp"}},
+	{EntityName = "NPC9",SpawnPosition = {vForward=math.Rand(1000, -1000),vRight=math.Rand(-1000, 1000),vUp=50},Entities = {"npc_zad_vmp_skeleton_warrior_sp"}},
+	{EntityName = "NPC10",SpawnPosition = {vForward=math.Rand(1000, -1000),vRight=math.Rand(-1000, 1000),vUp=50},Entities = {"npc_zad_vmp_skeleton_warrior_sp"}},
 	
 }
 ENT.TimedSpawn_Time = 3 -- How much time until it spawns another SNPC?

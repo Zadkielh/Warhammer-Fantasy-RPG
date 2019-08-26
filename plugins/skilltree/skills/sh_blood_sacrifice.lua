@@ -52,7 +52,7 @@ local function ability( SKILL, ply )
         local naturalDamage = targetChar:getData("naturalDamage",0)
         local damage = naturalDamage + (bloodPool * 0.5)
                 
-        targetChar:setData("naturalDamage", damage)
+        targetChar:setData("tempDamage", damage)
                 
         timer.Simple(0, function()
             ParticleEffectAttach("fantasy_khorne_enhance_great", PATTACH_POINT_FOLLOW, ply, 3)
@@ -60,7 +60,7 @@ local function ability( SKILL, ply )
 
         timer.Create("blood_sacrifice"..(ply:SteamID()), 10, 1, function()
             if (targetChar) then
-                targetChar:setData("naturalDamage", naturalDamage)
+                targetChar:setData("tempDamage", naturalDamage)
             end
                     
         end)
@@ -76,7 +76,7 @@ local function ability( SKILL, ply )
         local naturalDamage = targetChar:getData("naturalDamage",0)
         local damage = naturalDamage + (health * 0.1)
                 
-        targetChar:setData("naturalDamage", damage)
+        targetChar:setData("tempDamage", damage)
                 
         timer.Simple(0, function()
             ParticleEffectAttach("fantasy_khorne_enhance_great", PATTACH_POINT_FOLLOW, ply, 3)
@@ -84,7 +84,7 @@ local function ability( SKILL, ply )
 
         timer.Create("blood_sacrifice"..(ply:SteamID()), 10, 1, function()
             if (targetChar) then
-                targetChar:setData("naturalDamage", naturalDamage)
+                targetChar:setData("tempDamage", naturalDamage)
             end
                     
         end)

@@ -857,7 +857,7 @@ hook.Add("EntityTakeDamage", "skillMods", function(Entity, dmg)
 		if (ply:GetNWBool("RavCarni")) then
 			timer.Simple(0.05, function()
 				local lifeSteal = char:getData("lifeSteal", 0)
-				char:setData("lifeSteal", math.max(0, lifeSteal -50))
+				char:setData("templifeSteal", math.max(0, lifeSteal))
 				ply:SetNWBool("RavCarni", false)
 			end)
 		end
@@ -867,7 +867,7 @@ hook.Add("EntityTakeDamage", "skillMods", function(Entity, dmg)
 				local naturalDamage = char:getData("naturalDamage",0)
 				local faith = char:getAttrib("fth")
 				local damage = naturalDamage - (faith * 2) - 100
-				char:setData("naturalDamage", math.max(0,damage))
+				char:setData("tempDamage", math.max(0,naturalDamage))
 				ply:SetNWBool("SigmarHammer", false)
 			end)
 		end
@@ -877,7 +877,7 @@ hook.Add("EntityTakeDamage", "skillMods", function(Entity, dmg)
 				local naturalDamage = char:getData("naturalDamage",0)
 				local str = char:getAttrib("str")
 				local damage = naturalDamage - (str * 2) - 100
-				char:setData("naturalDamage", math.max(0,damage))
+				char:setData("tempDamage", math.max(0,naturalDamage))
 				ply:SetNWBool("WarriorCleave", false)
 			end)
 		end
@@ -887,7 +887,7 @@ hook.Add("EntityTakeDamage", "skillMods", function(Entity, dmg)
 				local naturalDamage = char:getData("naturalDamage",0)
 				local str = char:getAttrib("str")
 				local damage = naturalDamage - (str * 5) - 100
-				char:setData("naturalDamage", math.max(0,damage))
+				char:setData("tempDamage", math.max(0,naturalDamage))
 				ply:SetNWBool("MortalStrike", false)
 				if Entity:IsPlayer() then
 					local targetChar = Entity:getChar()
@@ -906,7 +906,7 @@ hook.Add("EntityTakeDamage", "skillMods", function(Entity, dmg)
 				local naturalDamage = char:getData("naturalDamage",0)
 				local str = char:getAttrib("str")
 				local damage = naturalDamage - (str * 5) - 100
-				char:setData("naturalDamage", math.max(0,damage))
+				char:setData("tempDamage", math.max(0,naturalDamage))
 				ply:SetNWBool("ColiSmash", false)
 				if Entity:IsPlayer() then
 					local targetChar = Entity:getChar()

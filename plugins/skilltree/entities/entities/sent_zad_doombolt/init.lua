@@ -18,6 +18,10 @@ function ENT:CustomOnInitialize()
 	//ParticleEffectAttach("rocket_smoke", PATTACH_ABSORIGIN_FOLLOW, self, 0)
 	ParticleEffectAttach("hell_bolt", PATTACH_ABSORIGIN_FOLLOW, self, 0)
 	
+	local char = self:GetOwner():getChar()
+	if !(self:GetOwner():IsPlayer()) then return end
+	self.DirectDamage = 50 + (char:getAttrib("mgc") * 2) + ((25 * (char:getLevel()*char:getLevel()) / (char:getLevel()+char:getLevel())))
+
 	self:SetMaterial("Models/effects/vol_light001")
 
 	

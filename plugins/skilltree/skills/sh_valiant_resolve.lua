@@ -57,7 +57,7 @@ local function ability( SKILL, ply )
     local naturalArmorRating = targetChar:getData("naturalArmorRating",0)
     local armorrating = naturalArmorRating + 200
             
-    targetChar:setData("naturalArmorRating", armorrating)
+    targetChar:setData("tempArmorRating", armorrating)
 			
     timer.Create("valiant_resolveParticle"..(ply:SteamID()), 0.25, 4, function()
 		ParticleEffectAttach( "40k_assault_valiant", PATTACH_ABSORIGIN_FOLLOW, ply, 0 )
@@ -65,7 +65,7 @@ local function ability( SKILL, ply )
 
     timer.Create("valiant_resolve"..(ply:SteamID()), 10, 1, function()
         if (targetChar) then
-			targetChar:setData("naturalArmorRating", naturalArmorRating)
+			targetChar:setData("tempArmorRating", naturalArmorRating)
         end
                 
 	end)

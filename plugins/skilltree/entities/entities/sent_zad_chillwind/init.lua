@@ -38,14 +38,15 @@ end
 function ENT:CustomOnThink()
 	ParticleEffectAttach("fantasy_chillwind", PATTACH_POINT_FOLLOW, self, 1)
 	self.HasParticle = true
-
+	local char = self:GetOwner():getChar()
+	if !(self:GetOwner():IsPlayer()) then return end
 	local entities = ents.FindInSphere( self:GetPos(), 150 )
 	if (self.Active) then
 		for k, v in pairs(entities) do
 			if v:IsNPC() or v:IsPlayer() then
 				if v == self then return end
 				local d = DamageInfo()
-				d:SetDamage( 75 )
+				d:SetDamage( 75 + (char:getAttrib("mgc") * 2) + ((25 * (char:getLevel()*char:getLevel()) / (char:getLevel()+char:getLevel())))) 
 				d:SetAttacker( self )
 				d:SetDamageType( DMG_CRUSH )
 

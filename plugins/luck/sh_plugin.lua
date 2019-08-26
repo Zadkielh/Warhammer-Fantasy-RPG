@@ -18,7 +18,7 @@ if (SERVER) then
 			if crit <= luck then
 				dmg:ScaleDamage( 2 + power)
 				dmg:SetDamageType( DMG_DIRECT )
-				dmg:GetAttacker():EmitSound("weapons/gauss/fire1.wav", 100)
+				dmg:GetAttacker():EmitSound("weapons/gauss/fire1.wav", 50)
 			end
 
 			end

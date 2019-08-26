@@ -46,7 +46,8 @@ do
         
         local armorrating = 0
         local naturalArmorRating = self:getData("naturalArmorRating", 0)
-        armorrating = armorrating + naturalArmorRating
+        local tempArmorRating = math.max(0,self:getData("tempArmorRating", 0) - naturalArmorRating)
+        armorrating = armorrating + naturalArmorRating + tempArmorRating
 
         for k, v in pairs(items) do
             if v:getData("equip") then
@@ -74,7 +75,8 @@ do
         local hp = constitutionHealth + classHealth + levelHealth
 
         local naturalMaxHP = self:getData("naturalHPMax", 0)
-        hp = hp + naturalMaxHP
+        local tempMaxHP = math.max(0,self:getData("tempHPMax", 0) - naturalMaxHP)
+        hp = hp + naturalMaxHP + tempMaxHP
 
         for k, v in pairs(items) do
             if v:getData("equip") then
@@ -90,8 +92,9 @@ do
         
         local damage = 0
         local naturalDamage = self:getData("naturalDamage", 0)
+        local tempDamage = math.max(0,self:getData("tempDamage", 0) - naturalDamage)
         local str = self:getAttrib("str") / 100
-        damage = (damage + naturalDamage) * (1 + str)
+        damage = (damage + naturalDamage + tempDamage) * (1 + str)
         /*
         for k, v in pairs(items) do 
             if v:getData("equip") then
@@ -108,7 +111,8 @@ do
         
         local shield = 0
         local naturalShield= self:getData("naturalShield", 0)
-        shield = shield + naturalShield
+        local tempShield = math.max(0,self:getData("tempShield", 0) - naturalShield)
+        shield = shield + naturalShield + tempShield
         
         for k, v in pairs(items) do
             if v:getData("equip") then
@@ -125,7 +129,8 @@ do
         local shieldregen = 5
 
         local naturalShieldRegen = self:getData("naturalShieldRegen", 0)
-        shieldregen = shieldregen + naturalShieldRegen
+        local tempShieldRegen = math.max(0,self:getData("tempShieldRegen", 0) - naturalShieldRegen)
+        shieldregen = shieldregen + naturalShieldRegen + tempShieldRegen
         
         for k, v in pairs(items) do
             if v:getData("equip") then
@@ -142,7 +147,8 @@ do
         local hpregen = 5
 
         local naturalhpregen = self:getData("naturalHPRegen", 0)
-        hpregen = hpregen + naturalhpregen
+        local temphpregen = math.max(0,self:getData("tempHPRegen", 0) - naturalhpregen)
+        hpregen = hpregen + naturalhpregen + temphpregen
         
         for k, v in pairs(items) do
             if v:getData("equip") then
@@ -159,11 +165,14 @@ do
         local speed = 0
 
         local naturalSpeed = self:getData("naturalSpeed", 0)
-        speed = speed + naturalSpeed
+        local tempSpeed = math.max(0,self:getData("tempSpeed", 0) - naturalSpeed)
+        speed = speed + naturalSpeed + tempSpeed
         
         for k, v in pairs(items) do
             if v:getData("equip") then
-                speed = speed + v.traits.speed
+                if (type(v.traits.speed)) == "number" then
+                    speed = speed + v.traits.speed
+                end
             end
         end
 
@@ -256,8 +265,6 @@ end)
 
 
 hook.Add("PostPlayerLoadout", "EquipmentModifiers", function(client)
-
-    timer.Simple(0.1, function()
     
     local char = client:getChar()
     local items = char:getInv():getItems()
@@ -274,6 +281,16 @@ hook.Add("PostPlayerLoadout", "EquipmentModifiers", function(client)
 	client:getChar():setData("naturalHPRegen", 0)
     client:getChar():setData("bloodpool", 0)
 	client:getChar():setData("lifeSteal", 0)
+
+    client:getChar():setData("tempSpeed", 0)
+    client:getChar():setData("tempArmorRating", 0)
+    client:getChar():setData("tempDamage", 0)
+    client:getChar():setData("tempHPMax", 0)
+    client:getChar():setData("tempShield", 0)
+    client:getChar():setData("tempShieldRegen", 0)
+    client:getChar():setData("tempHPRegen", 0)
+    client:getChar():setData("tempbloodpool", 0)
+    client:getChar():setData("templifeSteal", 0)
 
     local hp = 0
     local shield = 0
@@ -306,6 +323,5 @@ hook.Add("PostPlayerLoadout", "EquipmentModifiers", function(client)
 
     
     client:HealthRegeneration()
-    end)
 end
 )

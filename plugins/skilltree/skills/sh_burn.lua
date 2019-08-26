@@ -28,7 +28,7 @@ Skill Point Cost:]] .. SKILL.SkillPointCost .. [[
     
 ]]
 
-SKILL.coolDown = 5
+SKILL.coolDown = 10
 
 local function ability(SKILL, ply )
    local nospam = ply:GetNWBool( "nospamRanged" )
@@ -40,6 +40,8 @@ local function ability(SKILL, ply )
 		return
 	end
 
+	local char = ply:getChar()
+	
 	local mana = ply:getLocalVar("mana", 0)
 		if mana < 20 then
 			return
@@ -50,7 +52,8 @@ local function ability(SKILL, ply )
 
 	if (AbilityPos.Entity:IsNPC() or AbilityPos.Entity:IsPlayer()) then
 		if ply:GetPos():Distance( AbilityPos.Entity:GetPos() ) <= 500 then
-			AbilityPos.Entity:Ignite(10, 50)
+			AbilityPos.Entity:TakeDamage(10 + (char:getAttrib("mgc") * 2) + ((25 * (char:getLevel()*char:getLevel()) / (char:getLevel()+char:getLevel()))), ply, ply)
+			AbilityPos.Entity:Ignite(10, 50 + (char:getAttrib("mgc") * 2))
 		end
 	end
 			

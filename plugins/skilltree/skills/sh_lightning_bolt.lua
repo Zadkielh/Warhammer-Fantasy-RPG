@@ -40,6 +40,7 @@ local function ability(SKILL, ply )
 		return
 	end
 
+	local char = ply:getChar()
 	local mana = ply:getLocalVar("mana", 0)
 		if mana < 20 then
 			return
@@ -56,7 +57,7 @@ local function ability(SKILL, ply )
 			bullet.Tracer = 1
 			bullet.TracerName = ""
 			bullet.Force = 5
-			bullet.Damage = 50
+			bullet.Damage = 50 + (char:getAttrib("mgc") * 1) + ((25 * (char:getLevel()*char:getLevel()) / (char:getLevel()+char:getLevel())))
 			bullet.AmmoType = "ar2"
 			bullet.Callback = function(attacker,tr,dmginfo)
 				util.Decal("SmallScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
