@@ -5,6 +5,7 @@ PLUGIN.desc = "Equipment"
 if (SERVER) then
     
     util.AddNetworkString("lootBoxOpen")
+    util.AddNetworkString("openExamine")
 
 end
 
@@ -16,7 +17,47 @@ nut.command.add("info", {
 		net.Send( client )
     end
 })
+/*
+nut.command.add("examine", {
+    adminOnly = false,
+    syntax = "",
+    onRun = function(client, args)
+        local Target =  nut.command.findPlayer(client, args[1]) or client
+        if not IsValid(Target) then return end
+		local char = Target:getChar()
+		local ply = char:getPlayer()
+        local items = char:getInv():getItems()
 
+        local itemStats = {
+            armorrating = char:getArmorRating(),
+            Damage = char:getDamage(),
+            maxShield = char:getMaxShield(),
+            shieldRegen = char:getShieldRegen(),
+            hpRegen = char:getHealthRegen()
+        }
+
+        local itemTable = {}
+        
+        local charAttribs = char:getAttribs()
+
+        for k, v in pairs(items) do
+            local key = #itemTable + 1
+            itemTable[key] = {
+                uniqueID = nut.item.instances[k].uniqueID,
+                item = v,
+                id = k
+            }
+        end
+        
+        net.Start( "openExamine" )
+            net.WriteEntity(ply)
+            net.WriteTable(itemTable)
+            net.WriteTable(itemStats)
+            net.WriteTable(charAttribs)
+		net.Send( client )
+    end
+})
+*/
 nut.command.add("skills", {
     adminOnly = false,
     syntax = "",
@@ -41,9 +82,15 @@ nut.command.add("stats", {
 do
     local charMeta = nut.meta.character
 
-     function charMeta:getArmorRating()
-        local items = self:getInv():getItems()
-        
+     function charMeta:getArmorRating(itemTable)
+        local items
+
+        if (itemTable) then
+            items = itemTable
+        else
+            items = self:getInv():getItems()
+        end
+
         local armorrating = 0
         local naturalArmorRating = self:getData("naturalArmorRating", 0)
         local tempArmorRating = math.max(0,self:getData("tempArmorRating", 0) - naturalArmorRating)
@@ -58,8 +105,14 @@ do
         return armorrating
     end
 
-    function charMeta:getMaxHealth()
-        local items = self:getInv():getItems()
+    function charMeta:getMaxHealth(itemTable)
+        local items
+
+        if (itemTable) then
+            items = itemTable
+        else
+            items = self:getInv():getItems()
+        end
         
         local factionHealth = nut.faction.indices[self:getFaction()].health
         local constitutionHealth = factionHealth + (self:getAttrib("con", 0) * 100)
@@ -87,8 +140,14 @@ do
         return hp, constitutionHealth, factionHealth, classHealth
     end
 
-    function charMeta:getDamage()
-        local items = self:getInv():getItems()
+    function charMeta:getDamage(itemTable)
+        local items
+
+        if (itemTable) then
+            items = itemTable
+        else
+            items = self:getInv():getItems()
+        end
         
         local damage = 0
         local naturalDamage = self:getData("naturalDamage", 0)
@@ -106,8 +165,14 @@ do
         return damage
     end
 
-    function charMeta:getMaxShield()
-        local items = self:getInv():getItems()
+    function charMeta:getMaxShield(itemTable)
+        local items
+
+        if (itemTable) then
+            items = itemTable
+        else
+            items = self:getInv():getItems()
+        end
         
         local shield = 0
         local naturalShield= self:getData("naturalShield", 0)
@@ -123,8 +188,14 @@ do
         return shield
     end
 
-    function charMeta:getShieldRegen()
-        local items = self:getInv():getItems()
+    function charMeta:getShieldRegen(itemTable)
+        local items
+
+        if (itemTable) then
+            items = itemTable
+        else
+            items = self:getInv():getItems()
+        end
         
         local shieldregen = 5
 
@@ -141,8 +212,14 @@ do
         return shieldregen
     end
 
-    function charMeta:getHealthRegen()
-        local items = self:getInv():getItems()
+    function charMeta:getHealthRegen(itemTable)
+        local items
+
+        if (itemTable) then
+            items = itemTable
+        else
+            items = self:getInv():getItems()
+        end
         
         local hpregen = 5
 
@@ -159,8 +236,14 @@ do
         return hpregen
     end
 
-    function charMeta:getSpeed()
-        local items = self:getInv():getItems()
+    function charMeta:getSpeed(itemTable)
+        local items
+
+        if (itemTable) then
+            items = itemTable
+        else
+            items = self:getInv():getItems()
+        end
         
         local speed = 0
 

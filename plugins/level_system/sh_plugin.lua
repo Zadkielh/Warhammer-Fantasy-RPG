@@ -6,7 +6,8 @@ if (!nut.char) then include("sh_character.lua") end
 nut.util.includeDir("libs")
 
 function PLUGIN:OnNPCKilled(npc, attacker, inflictor)
-	if IsValid(npc) and IsValid(attacker) then
+	if IsValid(npc) and IsValid(attacker) and !(npc.IsSummoned) then
+	
 		local entID = npc:EntIndex()
 		if !(NPC_STATS[entID]) then return end
 		if attacker:IsPlayer() then
@@ -60,16 +61,21 @@ function PLUGIN:OnNPCKilled(npc, attacker, inflictor)
 end
 
 hook.Add("EntityTakeDamage", "sharedXpOnNpcDamaged", function(Entity, dmg)
-	if dmg:GetAttacker():IsPlayer() then
-		local xp = math.min(dmg:GetDamage() / 2000, Entity:Health() / 2000)
-		if (dmg:GetAttacker():getChar()) then
-			dmg:GetAttacker():getChar():updateXP(xp)
+
+	if (Entity:IsNPC() and !(Entity.IsSummoned)) then
+			
+		if dmg:GetAttacker():IsPlayer() then
+			local xp = math.min(dmg:GetDamage() / 2000, Entity:Health() / 2000)
+			if (dmg:GetAttacker():getChar()) then
+				dmg:GetAttacker():getChar():updateXP(xp)
+			end
+		elseif dmg:GetAttacker():GetOwner():IsPlayer() then
+			local xp = math.min(dmg:GetDamage() / 2000, Entity:Health() / 2000)
+			if (dmg:GetAttacker():GetOwner():getChar()) then
+				dmg:GetAttacker():GetOwner():getChar():updateXP(xp)
+			end
 		end
-	elseif dmg:GetAttacker():GetOwner():IsPlayer() then
-		local xp = math.min(dmg:GetDamage() / 2000, Entity:Health() / 2000)
-		if (dmg:GetAttacker():GetOwner():getChar()) then
-			dmg:GetAttacker():GetOwner():getChar():updateXP(xp)
-		end
+	
 	end
 
 	local attacker = dmg:GetAttacker()

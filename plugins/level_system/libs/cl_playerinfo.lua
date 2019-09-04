@@ -99,6 +99,7 @@ hook.Add("PostDrawOpaqueRenderables", "HUDPlayerPostDrawOpaqueRenderables", func
 		local blue = 0
 		local green = 255
 		local level = char.level
+			if !(level) then return end 
 			if level >= 10 then
 				red = 250
 				green = 200

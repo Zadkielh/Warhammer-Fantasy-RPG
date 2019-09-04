@@ -14,6 +14,10 @@ local PANEL = {}
 		end
 
 		nut.gui.gear = self
+		nut.gui.examinePly = self.ply
+		nut.gui.examineItems = self.items
+		nut.gui.examineItemStats = self.itemStats
+		nut.gui.examineAttribs = self.charAttribs
 
 		local options = {}
 
@@ -63,23 +67,21 @@ local PANEL = {}
 		local tabs = {}
 
 		tabs["Character"] = function(panel)
-			panel:Add("characterGear")
+			panel:Add("examineGear")
 		end
-		tabs["Skills"] = function(panel)
-			panel:Add("skillsInfo")
-		end
-		tabs["Traits"] = function(panel)
-			panel:Add("traitsInfo")
-		end
-		tabs["Options"] = function(panel)
-			panel:Add("optionsGear")
-		end
-
-		tabs["Party"] = function(panel)
-			panel:Add("partyInfo")
-		end
+		--tabs["Skills"] = function(panel)
+		--	panel:Add("skillsInfo")
+		--end
+		--tabs["Traits"] = function(panel)
+		--	panel:Add("traitsInfo")
+		--end
+		--tabs["Options"] = function(panel)
+		--	panel:Add("optionsGear")
+		--end
 
 		local margin = 50
+		/*
+
 		tabs["Inventory"] = function(panel)
 			if (hook.Run("CanPlayerViewInventory") != false) then
 				local inventory = LocalPlayer():getChar():getInv()
@@ -126,6 +128,7 @@ local PANEL = {}
 				end
 			end
 		end
+		*/
 
 		self.tabList = {}
 		for name, callback in SortedPairs(tabs) do
@@ -259,8 +262,16 @@ local PANEL = {}
     end
 
 
-vgui.Register("gearInfo", PANEL, "DFrame")
+vgui.Register("examineInfo", PANEL, "DFrame")
 
-net.Receive( "openGear", function( len )
-	vgui.Create("gearInfo")
+net.Receive( "openExamine", function( len )
+	local ply = net.ReadEntity()
+	local Items = net.ReadTable()
+	local itemStats = net.ReadTable()
+	local charAttribs = net.ReadTable()
+	PANEL.ply = ply
+	PANEL.items = Items
+	PANEL.itemStats = itemStats
+	PANEL.charAttribs = charAttribs
+	vgui.CreateFromTable( PANEL )
 end) 
